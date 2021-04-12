@@ -1,0 +1,183 @@
+<view class="page">
+  <mp-cells ext-class="my-cells" title="">
+    <mp-cell value="申请人" footer="{{aksuser}}"></mp-cell>
+    <mp-cell value="付款方式" footer="{{fkstyle}}"></mp-cell>
+    <mp-cell value="所属部门" footer="{{park}}"></mp-cell>
+    <mp-cell value="申请日期" footer="{{date}}"></mp-cell>
+    <mp-cell value="是否关联项目" footer="{{isGL}}"></mp-cell>
+    <mp-cell wx:if="{{isGL=='已关联'}}" value="项目名称" footer="{{projectName}}"></mp-cell>
+    <mp-cell wx:else style="display:none;" value="项目名称" footer="{{projectName}}"></mp-cell>
+    <!-- <mp-cell>
+      <view slot="title">项目名称</view>
+      <view style="text-align:center;">{{projectName}}</view> 
+      <view slot="footer">{{projectName}}</view>
+    </mp-cell> -->
+    <mp-cell wx:if="{{isGL=='已关联'}}" value="项目地址" footer="{{address}}"></mp-cell>
+    <mp-cell wx:else style="display:none;" value="项目地址" footer="{{address}}"></mp-cell>
+  </mp-cells>
+  <scroll-view scroll-y="true" style="max-height:{{scrollHeight}}px;">
+    <mp-cells wx:for="{{moneyData}}" wx:key="a" ext-class="my-cells" title="{{item.type}}">
+      <mp-cell hover link value="{{item.name}}" footer="{{item.num}}" bindtap="moneyNav" data-id="{{item.id}}"
+        data-type="{{item.type}}"></mp-cell>
+    </mp-cells>
+  </scroll-view>
+</view>
+<view class="pay">
+  <view class="fg">支付信息</view>
+  <!-- -- -->
+  <mp-cells wx:if="{{ischoose}}" ext-class="my-cells" title="">
+    <mp-cell value="员工姓名" footer="{{username}}"></mp-cell>
+    <mp-cell value="员工编号" footer="{{usernum}}"></mp-cell>
+    <mp-cell>
+      <view slot="title">选择转账</view>
+      <!-- <view class="chooseProject"> 
+        <picker mode="selector" style="width:100%" range="{{bankdata}}" range-key="name" value="{{bankId}}"
+          bindchange="bankchange">
+          <view class="picker">{{bankdata[bankId]['name']}}</view>
+        </picker>
+      </view> -->
+      <view slot="footer">{{bankchoose}}</view>
+    </mp-cell>
+    <mp-cell value="员工户名" footer="{{bankshow.user}}"></mp-cell>
+    <mp-cell value="银行卡号" footer="{{bankshow.banknum}}"></mp-cell>
+    <mp-cell value="开户行" footer="{{bankshow.bankname}}"></mp-cell>
+    <mp-cell>
+      <view slot="title">支付合计金额</view>
+      <view slot="footer" style="color: red;">{{moneyTotal}}元</view>
+    </mp-cell>
+  </mp-cells>
+  <!-- -- -->
+  <mp-cells wx:else ext-class="my-cells" title="">
+    <mp-cell value="销售方户名" footer="{{bankshow.user}}"></mp-cell>
+    <mp-cell value="开户行" footer="{{bankshow.banknum}}"></mp-cell>
+    <mp-cell value="银行卡号" footer="{{bankshow.bankname}}"></mp-cell>
+    <mp-cell>
+      <view slot="title">支付合计金额</view>
+      <view slot="footer" style="color: red;">{{moneyTotal}}元</view>
+    </mp-cell>
+  </mp-cells>
+  <!-- -- -->
+</view>
+<mp-cells ext-class="my-cells" title="">
+  <mp-cell link hover bindtap="jump_state">
+    <view slot="title">审核状态</view>
+    <view slot="footer">
+      <icon wx:if="{{state==3}}" class="icon-box-img" type="success"></icon>
+      <icon wx:elif="{{state==4}}" class="icon-box-img" type="warn"></icon>
+      <icon wx:else class="icon-box-img" type="waiting"></icon>
+      <text class="right_text">{{statename}}</text>
+    </view>
+  </mp-cell>
+
+  <mp-cell>
+    <view slot="title">审核意见</view>
+    <view slot="footer">
+      <input class="weui-input" value="{{reason}}" bindinput='projectTimechange' placeholder="请输入内容" />
+    </view>
+  </mp-cell>
+  <mp-cell wx:if="{{isshow_expense}}">
+    <view slot="title">发票是否签收</view>
+    <view slot="footer">
+      <radio-group bindchange="radioChange">
+        <label class="radio" wx:for="{{checkRadio}}" wx:key="index">
+          <radio value="{{item.value}}" checked="true" />{{item.name}}
+        </label>
+      </radio-group>
+    </view>
+  </mp-cell>
+  <mp-cell wx:if="{{isshow_sign}}">
+    <view slot="title">总经理签名</view>
+    <view slot="footer">
+      <!-- <view style="color: skyblue">待上传签名</view> -->
+
+      <view wx:if="{{sign_image==''}}" class="weui-cell__ft" style="color: skyblue" catchtap='showInputLayer'>
+        待上传签名
+      </view>
+      <view wx:else class="weui-cell__ft">
+        <image class="signimage" src='{{sign_image}}' mode="scaleToFill" binderror="binderrorimg" catchtap='sighlook'>
+        </image>
+      </view>
+
+
+
+    </view>
+  </mp-cell>
+</mp-cells>
+
+
+<view wx:if='{{showPayPwdInput}}'>
+  <view class='bg_layer'></view>
+  <view class='input_main'>
+    <view class='input_title'>
+      <!-- <view class='input_back' catchtap='hidePayLayer'><text></text></view> -->
+      <text>请输入签名验证密码</text>
+    </view>
+    <view class='input_tip'>
+      <!-- <text>请输入签名验证密码</text> -->
+    </view>
+    <view class='input_row' catchtap='getFocus'>
+      <!-- <view class='pwd_item' wx:for='{{6}}' wx:key='item' wx:for-index='i'>
+              <text wx:if='{{pwdVal.length>i}}'></text>
+            </view> -->
+      <!-- <input class='input_control' password type='number' focus='{{payFocus}}' bindinput='inputPwd' maxlength='6' /> -->
+      <input class="weui-input" auto-focus style="text-align:left;padding: 0 40rpx;" value="{{pwdVal}}"
+        bindinput='inputPwd' password placeholder="" />
+    </view>
+    <view class="weui-footer__text" style="display:flex;margin: 20rpx 0;">
+      <button type="primary" style="background-color: rgb(85,85,85);width:40%;" catchtap="hidePayLayer">取
+        消</button>
+      <button type="primary" style="background-color: rgb(2,167,240);width:40%;" bindtap="password_pass">确
+        定</button>
+    </view>
+    <!-- <view class='forget_pwd' catchtap='hidePayLayer'>忘记密码</view> -->
+    <!-- <input class='input_control' password type='number' focus='{{payFocus}}' bindinput='inputPwd'  /> -->
+  </view>
+</view>
+
+<view wx:if='{{!showPayPwdInput}}' class="weui-footer__text" style="display:flex;margin: 20rpx 0;">
+  <button type="primary" style="background-color: rgb(85,85,85);width:40%;" bindtap="nopass">不通过</button>
+  <button type="primary" style="background-color: rgb(2,167,240);width:40%;" bindtap="pass">通过</button>
+</view>
+<!-- <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+		<view class="weui-cell__hd" style="width:100%;">
+			<view>审核意见</view>
+			<view class="hdshow textbgc">
+        <textarea  class="weui-textarea" name="remark" value="{{reason}}"
+			bindinput='projectTimechange' />
+			</view>
+			<view class="weui-footer__text" style="display:flex;margin: 20rpx 0;">
+				<button type="primary" style="background-color: rgb(85,85,85);width:40%;" bindtap="nopass">不通过</button>
+				<button type="primary" style="background-color: rgb(2,167,240);width:40%;" bindtap="pass">通过</button>
+			</view>
+		</view>
+  </view> -->
+
+<view class="zan-dialog {{ showDialog ? 'zan-dialog--show' : '' }}">
+  <!-- 如果想点击弹窗外不隐藏，取消bindtap点击事件即可 -->
+  <view class="zan-dialog__mask" style="background-color: rgba(0,0,0,0.5);" />
+  <view class="zan-dialog__container">
+    <view style='padding:10rpx 10rpx;'>
+      <view class="closenav" bindtap="closedig">
+        <mp-icon type="field" icon="close2" color="deepskyblue" size="{{25}}"></mp-icon>
+      </view>
+      <view style="width:100%;text-align:center;">选择审批人</view>
+      <view class="chooseman" style="width:100%;text-align:center;">
+
+        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__hd" style="width:100%;text-align:left;">
+            {{users}}
+          </view>
+          <view class="weui-cell__hd hd_center">
+            <picker mode="selector" style="width:100%" range="{{parkdata}}" range-key="name" value="{{park1}}"
+              bindchange="parkchange">
+              <view class="picker">{{parkdata[park1]['name']}}</view>
+            </picker>
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+      </view>
+      <view class="issure">
+        <button type="primary" style="background-color: rgb(2,167,240);" bindtap="sure">确认</button></view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,94 @@
+<view class="page">
+  <view class="page__bd">
+
+    <mp-cells ext-class="my-cells" title="项目概况">
+      <mp-cell value="项目名称" footer="{{projectname}}"></mp-cell>
+      <mp-cell value="项目号" footer="{{projectnum}}"></mp-cell>
+      <mp-cell value="所属部门" footer="{{deptname}}"></mp-cell>
+      <mp-cell value="项目阶段" footer="{{projectpart}}"></mp-cell>
+      <mp-cell value="发放金额" footer="{{projectmoney}}"></mp-cell>
+      <mp-cell value="申请时间" footer="{{time}}"></mp-cell>
+      <mp-cell link bindtap="jump_nav" data-state="{{processInstanceId}}">
+        <view slot="title" style="color:gray;">审核状态</view>
+        <view slot="footer">
+          <icon wx:if="{{projectzt==0}}" class="icon-box-img" type="warn"></icon>
+          <icon wx:elif="{{projectzt==1}}" class="icon-box-img" type="success"></icon>
+          <icon wx:else class="icon-box-img" type="waiting"></icon>
+          <text wx:if="{{projectzt==0}}" class="right_text">未通过</text>
+          <text wx:elif="{{projectzt==1}}" class="right_text">通过</text>
+          <text wx:else class="right_text">审核中</text>
+        </view>
+      </mp-cell>
+      <mp-cell>
+        <view slot="title" style="color:gray;">审核意见</view>
+        <view slot="footer">
+          <input class="weui-input" value="{{reason}}" bindinput='projectTimechange' placeholder="请输入内容" />
+        </view>
+      </mp-cell>
+     
+    </mp-cells>
+
+    <mp-cells ext-class="my-cells" title="项目奖金分配">
+      <view class="part" wx:for="{{moneyFP}}" wx:for-item="item" wx:key="a">
+        <view class="showtitle">{{item.roleName}}(<text class="text_title">{{item.positionName}}</text>)</view>
+        <mp-cells ext-class="my-cells" class="bt_title" title="">
+          <view class="title">
+            <view class="titlenew">姓名</view>
+            <view class="titlenew">占比</view>
+            <view class="titlenew">金额</view>
+          </view>
+          <view class="title titlecolor" wx:for="{{item.namedata}}" wx:for-item="cell" wx:key="b">
+            <view class="titlenew">{{cell.userName}}</view>
+            <view class="titlenew">{{cell.proportionStr}}</view>
+            <view class="titlenew">{{cell.pfee}}</view>
+          </view>
+        </mp-cells>
+      </view>
+    </mp-cells>
+    <view class="weui-footer__text" style="display:flex;margin: 20rpx 0;">
+				<button type="primary"  style="background-color: rgb(85,85,85);width:40%;" bindtap="nopass">不通过</button>
+				<button type="primary"  style="background-color: rgb(2,167,240);width:40%;" bindtap="pass">通过</button>
+			</view>
+    <!-- <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd" style="width:100%;">
+        <view>审核意见</view>
+        <view class="hdshow textbgc">
+          <textarea class="weui-textarea" name="remark" value="{{reason}}" bindinput='projectTimechange' />
+          </view>
+			<view class="weui-footer__text" style="display:flex;margin: 20rpx 0;">
+				<button type="primary" style="background-color: rgb(85,85,85);width:40%;" bindtap="nopass">不通过</button>
+				<button type="primary" style="background-color: rgb(2,167,240);width:40%;" bindtap="pass">通过</button>
+			</view>
+		</view>
+  </view> -->
+  <view class="zan-dialog {{ showDialog ? 'zan-dialog--show' : '' }}">
+  <!-- 如果想点击弹窗外不隐藏，取消bindtap点击事件即可 -->
+  <view class="zan-dialog__mask" style="background-color: rgba(0,0,0,0.5);" />
+  <view class="zan-dialog__container">
+    <view style='padding:10rpx 10rpx;'>
+      <view class="closenav" bindtap="closedig">
+        <mp-icon type="field" icon="close2" color="deepskyblue" size="{{25}}"></mp-icon>
+      </view>
+      <view style="width:100%;text-align:center;">选择审批人</view>
+      <view class="chooseman" style="width:100%;text-align:center;">
+
+        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__hd" style="width:100%;text-align:left;">
+            {{users}}
+          </view>
+          <view class="weui-cell__hd hd_center" style="width:100%;text-align:left;">
+            <picker mode="selector" style="width:100%" range="{{parkdata}}" range-key="name" value="{{park1}}"
+              bindchange="parkchange">
+              <view class="picker">{{parkdata[park1]['name']}}</view>
+            </picker>
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+      </view>
+      <view class="issure">
+        <button type="primary" style="background-color: rgb(2,167,240);" bindtap="sure">确认</button></view>
+    </view>
+  </view>
+</view>
+  </view>
+</view>

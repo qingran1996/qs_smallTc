@@ -1,0 +1,23 @@
+.chooseProject {
+  width: 100%;
+  text-align: right;
+}
+.choosemoney {
+  width: 100%;
+  text-align: right;
+  font-size: 40rpx;
+  color: red;
+}
+.uploadshow {
+  color: rgb(2, 167, 240);
+}
+.bottomshow{
+  position: fixed;
+  width: 80%;
+  margin: 0 10%;
+  bottom: 3.75%;
+}
+.buttonshow{
+  height: 80rpx;
+  line-height: 80rpx;
+}

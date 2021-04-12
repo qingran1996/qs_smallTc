@@ -1,0 +1,32 @@
+<!--miniprogram/pages/myLeaveList/myLeaveList.wxml-->
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+
+    <view class="page__hd">
+   <view class="weui-cell weui-cell_input">
+                                       <view class="weui-cell__hd">
+                                           <view class="weui-label">打卡日期</view>
+                                       </view>
+                                       <view class="weui-cell__bd">
+                                           <picker mode="date" value="{{clockDate}}" start="2019-01-01" bindchange="bindClockDateChange">
+                                               <view class="weui-input">{{clockDate}}</view>
+                                           </picker>
+                                       </view>
+                                   </view>
+         <view wx:if="{{hasResult}}">
+      <view class="weui-cells weui-cells_after-title" wx:for="{{list}}" wx:key="{{index}}">
+                 <navigator url="../clockTopDetail/clockTopDetail?id={{item.id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                     <view class="weui-cell__bd">{{item.user_name}}</view>
+                     <view class="weui-cell__ft weui-cell__ft_in-access">{{item.clock_time}}</view>
+                 </navigator>
+             </view>
+         </view>
+          <view wx:else>
+             <view class="weui-cells weui-cells_after-title">
+                      <view class="weui-cell__bd">暂无记录</view>
+                      <view class="weui-cell__ft"></view>
+              </view>
+          </view>
+     </view>
+</view>
+
+

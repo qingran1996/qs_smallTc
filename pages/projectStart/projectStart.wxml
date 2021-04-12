@@ -1,0 +1,74 @@
+<!--miniprogram/pages/projectStart/projectStart.wxml-->
+<form bindsubmit="formSubmit" class="form" >
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__hd">
+     <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">项目名称</view>
+                    </view>
+                    <view class="weui-cell__bd">
+                        <input class="weui-input" name="name" value="{{name}}" bindinput='bindNameInput'  placeholder="请输入项目名称"/>
+                    </view>
+                </view>
+               </view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell weui-cell_picker">
+                        <view class="weui-cell__bd">
+                            <view class="weui-label">项目类型</view>
+                        </view>
+                          <view class="weui-cell__ft">
+                         <picker mode="selector" style="width:100%" range="{{projectTypeList}}"  range-key="name"  value="{{type_id}}"  bindchange="bindTypeIdChange">
+                          <view class="picker">{{projectTypeList[type_id].name}}</view>
+                            </picker>
+                            </view>
+                  </view>
+                 <view class="weui-cells weui-cells_after-title">
+                            <view class="weui-cell">
+                             <view class="weui-cell__hd">
+                                                                    <view class="weui-label">项目描述</view>
+                                                                </view>
+                                <view class="weui-cell__bd">
+                                    <textarea class="weui-textarea" name="desc" value="{{desc}}"  bindinput='bindDescInput'  placeholder="请输入项目描述" style="height: 3.3em" />
+                                    <view class="weui-textarea-counter">0/200</view>
+                                </view>
+                            </view>
+                        </view>
+                <view class="weui-cell weui-cell_input">
+                                    <view class="weui-cell__hd">
+                                        <view class="weui-label">开始日期</view>
+                                    </view>
+                                    <view class="weui-cell__bd">
+                                        <picker mode="date" value="{{start_date}}" start="2019-01-01" bindchange="bindStartDateChange">
+                                            <view class="weui-input">{{start_date}}</view>
+                                        </picker>
+                                    </view>
+                                </view>
+                <view class="weui-cells weui-cells_after-title">
+                            <view class="weui-cell weui-cell_switch">
+                                <view class="weui-cell__bd"><view class="weui-label">是否外派</view></view>
+                                <view class="weui-cell__ft">
+                                    <switch value="{{is_expatriated}}" bindchange="checkExpatriated"/>
+                                </view>
+                            </view>
+                        </view>
+                         <view class="weui-cells weui-cells_after-title">
+                                                    <view class="weui-cell weui-cell_switch">
+                                                        <view class="weui-cell__bd"><view class="weui-label">项目经理</view></view>
+                                                        <view class="weui-cell__ft">
+                         <picker mode="selector" style="width:100%" range="{{projectManagerList}}"  range-key="name"  value="{{projectManagerId}}"  bindchange="bindManagerChange">
+                                                                    <view class="picker">{{projectManagerList[projectManagerId].name}}</view>
+
+                                                            </picker>
+                                                            </view>
+                                                              </view>
+                                                                </view>
+ <view class="page__bd page__bd_spacing page__bd_margin">
+        <button class="weui-btn" type="primary" form-type="submit">创建</button>
+</view>
+
+    </view>
+     </view>
+</view>
+</form>
+

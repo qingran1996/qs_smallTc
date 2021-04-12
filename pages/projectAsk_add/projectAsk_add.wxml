@@ -1,0 +1,230 @@
+<scroll-view class="page" scroll-y="true" style="height:{{scrollHeight}}px;">
+	<view class="page__hd">
+		<view class="weui-cells weui-cells_after-title">
+
+			<view style="padding-left: 35rpx;color:red;font-size: 12px;">
+				<mp-icon icon="error" color="red" size="{{16}}"></mp-icon>请按照"客户+时间（年/月）+项目"格式输入
+			</view>
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					项目名称
+				</view>
+				<!-- <input class="weui-input" placeholder-style="color:#F76260" value="{{projectname}}" bindinput='projectremark'
+					placeholder="请输入内容" /> -->
+
+					<textarea  class="weui-input" auto-height="true" placeholder-style="color:#F76260" value="{{projectname}}"
+						bindinput='projectremark' placeholder="请输入内容" />
+
+			</view>
+
+			<!-- <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					项目编号
+				</view>
+				<input class="weui-input" value="{{projectnum}}" auto-focus bindinput='projectnumremark' placeholder="请输入内容" />
+			</view> -->
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					客户名称
+				</view>
+				<view class="weui-cell__hd hd_center" style="text-align:center;">
+					<picker mode="selector" style="width:100%" range="{{khdata}}" range-key="name" value="{{khremark}}"
+						bindchange="khchange">
+						<view class="picker">{{khdata[khremark]['name']}}</view>
+					</picker>
+				</view>
+				<view class="weui-cell__ft weui-cell__ft_in-access"></view>
+				<!-- <input class="weui-input" value="{{khremark}}" auto-focus bindinput='bindRemarkInput' placeholder="请输入内容" /> -->
+			</view>
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					商务总监
+				</view>
+				<view class="weui-cell__hd hd_center">
+					<picker mode="selector" style="width:100%" range="{{parkdata}}" range-key="name" value="{{park}}"
+						bindchange="parkchange">
+						<view class="picker">{{parkdata[park]['name']}}</view>
+					</picker>
+				</view>
+				<view class="weui-cell__ft weui-cell__ft_in-access"></view>
+			</view>
+
+
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					合同类型
+				</view>
+				<view class="weui-cell__hd hd_center">
+					<picker mode="selector" style="width:100%" range="{{htList}}" range-key="name" value="{{htType}}"
+						bindchange="htchange">
+						<view class="picker">{{htList[htType]['name']}}</view>
+					</picker>
+				</view>
+				<view class="weui-cell__ft weui-cell__ft_in-access"></view>
+			</view>
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					项目类型
+				</view>
+				<view class="weui-cell__hd hd_center">
+					<picker mode="selector" style="width:100%" range="{{projectTypeData}}" range-key="name"
+						value="{{protectType}}" bindchange="protectTypechange">
+						<view class="picker">{{projectTypeData[protectType]['name']}}</view>
+					</picker>
+				</view>
+				<view class="weui-cell__ft weui-cell__ft_in-access"></view>
+			</view>
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					行业
+				</view>
+				<view class="weui-cell__hd hd_center">
+					<picker mode="selector" style="width:100%" range="{{hangyeData}}" range-key="name" value="{{hangye}}"
+						bindchange="hangyechange">
+						<view class="picker">{{hangyeData[hangye]['name']}}</view>
+					</picker>
+				</view>
+				<view class="weui-cell__ft weui-cell__ft_in-access"></view>
+			</view>
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					开始日期
+				</view>
+				<view class="weui-cell__hd hd_center">
+					<picker mode="date" value="{{startTime}}" start="2015-09-01" end="2099-12-01" bindchange="bindDateChange">
+						<view class="picker">
+							{{startTime}}
+						</view>
+					</picker>
+				</view>
+				<view class="weui-cell__ft weui-cell__ft_in-access"></view>
+			</view>
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					结束日期
+				</view>
+				<view class="weui-cell__hd hd_center">
+					<picker mode="date" value="{{endTime}}" start="2015-09-01" end="2099-12-01" bindchange="bindendDateChange">
+						<view class="picker">
+							{{endTime}}
+						</view>
+					</picker>
+				</view>
+				<view class="weui-cell__ft weui-cell__ft_in-access"></view>
+			</view>
+
+			<!-- <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					项目周期
+				</view>
+				<input class="weui-input" value="{{projectTime}}" auto-focus bindinput='projectTimechange'
+					placeholder="请输入内容" />
+			</view> -->
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					项目总工时(总包项目)
+				</view>
+				<input class="weui-input" placeholder-style="color:#F76260" value="{{projectAllTime}}"
+					bindinput='projectAllTimechange' placeholder="请输入内容" />
+			</view>
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					项目描述
+				</view>
+				<view class='weui-cell__hd hdShow'>
+					<textarea wx:if="{{iszz}}" disabled class="weui-input" auto-height="true" value="{{projectremark}}"
+						bindinput='projectRemarkInput' placeholder="请输入内容" />
+					<textarea wx:else  class="weui-input" auto-height="true" value="{{projectremark}}" bindinput='projectRemarkInput'
+						placeholder="请输入内容" />
+					</view>
+					
+				
+			</view>
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					项目地址
+				</view>
+				<view class="weui-cell__hd hdShow">
+					<view class='bar bottomfix shadow justify-center'>
+						<textarea wx:if="{{iszz}}" disabled class="weui-input" value="{{dzremark}}" auto-height="true"  bindinput='placeRemarkInput' placeholder="请输入内容" />
+						<textarea wx:else class="weui-input" value="{{dzremark}}" auto-height="true"  bindinput='placeRemarkInput' placeholder="请输入内容" />
+					</view>
+					
+				</view>
+				<!-- <input class="weui-input" placeholder-style="color:#F76260" value="{{projectAllTime}}"  bindinput='projectAllTimechange'
+					placeholder="请输入内容" /> -->
+			</view>
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					所属区域
+				</view>
+				<view class="weui-cell__hd hd_center">
+					<picker mode="selector" style="width:100%" range="{{areadata}}" range-key="name" value="{{area}}"
+						bindchange="areachange">
+						<view class="picker">{{areadata[area]['name']}}</view>
+					</picker>
+				</view>
+				<view class="weui-cell__ft weui-cell__ft_in-access"></view>
+			</view>
+
+		</view>
+		<!-- <view class="weui-cells showlc">
+			<view class="liucheng">123</view>
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					项目名称
+				</view>
+				<input class="weui-input" value="{{projectname}}" auto-focus bindinput='projectremark' placeholder="请输入内容" />
+			</view>
+		</view> -->
+	</view>
+</scroll-view>
+
+<view class="bottomshow"> 
+
+<view class="weui-footer__text">
+	<button type="primary" loading="{{sureType}}" disabled="{{sureType}}" class="buttonshow" style="background-color: rgb(2,167,240);" bindtap="jump_projectAdd">
+			申请
+		</button>
+</view>
+
+</view>
+
+<view class="zan-dialog {{ showDialog ? 'zan-dialog--show' : '' }}">
+	<!-- 如果想点击弹窗外不隐藏，取消bindtap点击事件即可 -->
+	<view class="zan-dialog__mask" style="background-color: rgba(0,0,0,0.5);" />
+	<view class="zan-dialog__container">
+		<view style='padding:10rpx 10rpx;'>
+			<view class="closenav" bindtap="closedig">
+				<mp-icon type="field" icon="close2" color="deepskyblue" size="{{25}}"></mp-icon>
+			</view>
+			<view style="width:100%;text-align:center;">选择审批人</view>
+			<view class="chooseman" style="width:100%;text-align:center;">
+				<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+					<view class="weui-cell__hd">
+						商务总监
+					</view>
+					<view class="weui-cell__hd hd_center">
+						<picker mode="selector" style="width:100%" range="{{nextman}}" range-key="name" value="{{nextId}}"
+							bindchange="manchange">
+							<view class="picker">{{nextman[nextId]['name']}}</view>
+						</picker>
+					</view>
+					<view class="weui-cell__ft weui-cell__ft_in-access"></view>
+				</view>
+			</view>
+			<view class="issure">
+				<button type="primary" style="background-color: rgb(2,167,240);" bindtap="sure">确认</button></view>
+		</view>
+	</view>
+</view>

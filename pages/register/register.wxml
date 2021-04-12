@@ -1,0 +1,38 @@
+<!--miniprogram/pages/register/register.wxml-->
+
+<view class='register'>
+  <view class='reg_view'>
+    <text>用户名</text>
+    <input value='{{userName}}' bindinput='userNameInput' placeholder='请输入手机号/邮箱' placeholder-style='color: #c5c5c5;'></input>
+  </view>
+  <view class='reg_view'> 
+    <input type='number' value='{{code}}' bindinput='codeInput' placeholder='请输入验证码' placeholder-style='color: #c5c5c5;' maxlength='6'></input>
+     <button class='btn_code' bindtap='getCode'>{{codeName}}</button>
+  </view>
+   <view class='reg_view'>
+    <text>密码</text>
+    <input value='{{password}}' bindinput='passwordInput' placeholder='请输入密码' placeholder-style='color: #c5c5c5;'></input>
+  </view>
+    <view class='reg_view'>
+        <text>姓名</text>
+        <input value='{{userFullname}}' bindinput='userFullnameInput' placeholder='请输入姓名' placeholder-style='color: #c5c5c5;'></input>
+    </view>
+   <view class='reg_view'>
+    <text>性别</text>
+    <radio-group bindchange='sexChoose'>
+      <label class="radio" wx:for="{{sex}}" wx:key='index'>
+        <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+      </label>
+    </radio-group>
+  </view>
+   <view class='reg_view'>
+    <text>年龄</text>
+    <input type='number' value='{{age}}' bindinput='ageInput' placeholder='请输入年龄' placeholder-style='color: #c5c5c5;'></input>
+  </view>
+  <button class='reg_btn' bindtap='register'>注册</button>
+  <label class="agree fl" bindtap='agree'>
+    <view class='circle fl {{agreeState?"choosed":""}}'></view>
+    <text class='fl'>已阅读并同意我们的</text>
+  </label>
+  <navigator class='agree fl' url='../statement/statement' style='color: #68cbc8;'>《免责声明》</navigator>
+</view>

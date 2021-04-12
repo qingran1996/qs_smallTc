@@ -1,0 +1,83 @@
+<view class="page">
+  <mp-cells ext-class="my-cells" title="">
+    <mp-cell value="申请人" footer="{{aksuser}}"></mp-cell>
+    <mp-cell value="付款方式" footer="{{fkstyle}}"></mp-cell>
+    <mp-cell value="所属部门" footer="{{park}}"></mp-cell>
+    <mp-cell value="申请日期" footer="{{date}}"></mp-cell>
+    <mp-cell value="是否关联项目" footer="{{isGL}}"></mp-cell>
+    <mp-cell wx:if="{{isGL=='已关联'}}" value="项目名称" footer="{{projectName}}"></mp-cell>
+    <mp-cell wx:else style="display:none;" value="项目名称" footer="{{projectName}}"></mp-cell>
+    <!-- <mp-cell>
+      <view slot="title">项目名称</view>
+      <view style="text-align:center;">{{projectName}}</view> 
+      <view slot="footer">{{projectName}}</view>
+    </mp-cell> -->
+    <mp-cell wx:if="{{isGL=='已关联'}}" value="项目地址" footer="{{address}}"></mp-cell>
+    <mp-cell wx:else style="display:none;" value="项目地址" footer="{{address}}"></mp-cell>
+  </mp-cells>
+  <scroll-view scroll-y="true" style="max-height:{{scrollHeight}}px;">
+    <mp-cells wx:for="{{moneyData}}" wx:key="a" ext-class="my-cells" title="{{item.type}}">
+      <mp-cell hover link value="{{item.name}}" footer="{{item.num}}" bindtap="moneyNav" data-id="{{item.id}}" data-type="{{item.type}}"></mp-cell>
+    </mp-cells>
+  </scroll-view>
+</view>
+<view class="pay">
+  <view class="fg">支付信息</view>
+  <!-- -- -->
+  <mp-cells wx:if="{{ischoose}}" ext-class="my-cells" title="">
+    <mp-cell value="员工姓名" footer="{{username}}"></mp-cell>
+    <mp-cell value="员工编号" footer="{{usernum}}"></mp-cell>
+    <mp-cell>
+      <view slot="title">选择转账</view>
+      <!-- <view class="chooseProject"> 
+        <picker mode="selector" style="width:100%" range="{{bankdata}}" range-key="name" value="{{bankId}}"
+          bindchange="bankchange">
+          <view class="picker">{{bankdata[bankId]['name']}}</view>
+        </picker>
+      </view> -->
+      <view slot="footer">{{bankchoose}}</view>
+    </mp-cell>
+    <mp-cell value="员工户名" footer="{{bankshow.user}}"></mp-cell>
+    <mp-cell value="银行卡号" footer="{{bankshow.banknum}}"></mp-cell>
+    <mp-cell value="开户行" footer="{{bankshow.bankname}}"></mp-cell>
+    <mp-cell>
+      <view slot="title">支付合计金额</view>
+      <view slot="footer" style="color: red;">{{moneyTotal}}元</view>
+    </mp-cell>
+  </mp-cells>
+  <!-- -- -->
+  <mp-cells wx:else ext-class="my-cells" title="">
+    <mp-cell value="销售方户名" footer="{{bankshow.user}}"></mp-cell>
+    <mp-cell value="开户行" footer="{{bankshow.banknum}}"></mp-cell>
+    <mp-cell value="银行卡号" footer="{{bankshow.bankname}}"></mp-cell>
+    <mp-cell>
+      <view slot="title">支付合计金额</view>
+      <view slot="footer" style="color: red;">{{moneyTotal}}元</view>
+    </mp-cell>
+  </mp-cells>
+  <!-- -- -->
+</view>
+<mp-cells ext-class="my-cells" title="">
+  <mp-cell link hover bindtap="jump_state">
+    <view slot="title">审核状态</view>
+    <view slot="footer">
+      <icon wx:if="{{state==3}}" class="icon-box-img" type="success"></icon>
+      <icon wx:elif="{{state==4}}" class="icon-box-img" type="warn"></icon>
+      <icon wx:else class="icon-box-img" type="waiting"></icon>
+      <text class="right_text">{{statename}}</text>
+    </view>
+  </mp-cell>
+</mp-cells>
+<!-- <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+		<view class="weui-cell__hd" style="width:100%;">
+			<view>审核意见</view>
+			<view class="hdshow textbgc">
+        <textarea  class="weui-textarea" name="remark" value="{{reason}}"
+			bindinput='projectTimechange' />
+			</view>
+			<view class="weui-footer__text" style="display:flex;margin: 20rpx 0;">
+				<button type="primary" style="background-color: rgb(85,85,85);width:40%;" bindtap="nopass">不通过</button>
+				<button type="primary" style="background-color: rgb(2,167,240);width:40%;" bindtap="pass">通过</button>
+			</view>
+		</view>
+	</view> -->

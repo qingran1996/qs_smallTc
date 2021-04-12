@@ -1,0 +1,192 @@
+<scroll-view class="page" scroll-y="true" style="height:{{scrollHeight}}px;">
+	<view class="page__hd">
+		<view class="weui-cells weui-cells_after-title">
+
+			<!-- <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					申请人
+				</view>
+				<view class="weui-cell__hd hdShow">{{person}}</view>
+			</view> -->
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					客户名称
+				</view>
+				<view class="weui-cell__hd hdShow">{{khremark}}</view>
+			</view>
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					项目描述
+				</view>
+				<view class="weui-cell__hd hdShow">{{projectremark}}</view>
+				<!-- <input class="weui-input" value="{{projectremark}}" auto-focus bindinput='projectRemarkInput' placeholder="请输入内容"/> -->
+			</view>
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					项目地址
+				</view>
+				<view class="weui-cell__hd hdShow">{{dzremark}}</view>
+				<!-- <input class="weui-input" value="{{dzremark}}" auto-focus bindinput='placeRemarkInput' placeholder="请输入内容"/> -->
+			</view>
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					合同类型
+				</view>
+				<view class="weui-cell__hd hdShow">{{htType}}</view>
+			</view>
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					项目类型
+				</view>
+				<view class="weui-cell__hd hdShow">{{protectType}}</view>
+			</view>
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					行业
+				</view>
+				<view class="weui-cell__hd hdShow">{{hangye}}</view>
+			</view>
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					开始日期
+				</view>
+				<view class="weui-cell__hd hdShow">{{startTime}}</view>
+			</view>
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					结束日期
+				</view>
+				<view class="weui-cell__hd hdShow">{{endTime}}</view>
+			</view>
+
+			<!-- <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					项目周期
+				</view>
+				<view class="weui-cell__hd hdShow">{{projectTime}}</view>
+			</view> -->
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					项目总工时(总包项目)
+				</view>
+				<view class="weui-cell__hd hdShow">{{projectAllTime}}</view>
+				<!-- <input class="weui-input" value="{{projectAllTime}}" auto-focus bindinput='projectAllTimechange' placeholder="请输入内容"/> -->
+			</view>
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					所属区域
+				</view>
+				<view class="weui-cell__hd hdShow">{{areashow}}</view>
+				<!-- <input class="weui-input" value="{{projectAllTime}}" auto-focus bindinput='projectAllTimechange' placeholder="请输入内容"/> -->
+			</view>
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="jump_nav" data-state="{{shstate.state}}">
+				<view class="weui-cell__hd showstate">
+					审核状态
+				</view>
+
+
+				<view class="weui-cell__ft weui-cell__ft_in-access" >
+					<icon wx:if="{{shstate.state==1}}" class="icon-box-img" type="success"></icon>
+					<icon wx:elif="{{shstate.state==2}}" class="icon-box-img" type="waiting"></icon>
+					<icon wx:else class="icon-box-img" type="warn"></icon>
+					<text class="right_text">{{shstate.statename}}</text>
+				</view>
+
+
+
+			</view>
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					审核意见
+				</view>
+				<view class='weui-cell__hd hdShow'>
+					<!-- <textarea class="weui-textarea" auto-height="true" placeholder="placeholder颜色是红色的" fixed="true" name="remark" value="{{reason}}" 
+			bindinput='projectTimechange' /> -->
+			<input class="weui-input"  value="{{reason}}" bindinput='projectTimechange'
+					placeholder="请输入内容" />
+					</view>
+				
+			</view>
+
+		</view>
+	</view>
+
+
+	<!-- <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+		<view class="weui-cell__hd">
+			<view>审核意见</view>
+			<view class="hdshow textbgc">
+        <textarea class="weui-textarea" auto-focus="true" placeholder="placeholder颜色是红色的" fixed="true" name="remark" value="{{reason}}" 
+			bindinput='projectTimechange' />
+
+			</view>
+			<view class="weui-footer__text" style="display:flex;margin: 20rpx 0;">
+				<button type="primary" disabled="{{sureType}}" style="background-color: rgb(85,85,85);width:40%;" bindtap="nopass">不通过</button>
+				<button type="primary" disabled="{{sureType}}" style="background-color: rgb(2,167,240);width:40%;" bindtap="pass">通过</button>
+			</view>
+		</view>
+	</view> -->
+
+	<!-- <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					审核意见
+				</view>
+				<view class='weui-cell__hd hdShow'>
+					<textarea class="weui-textarea" auto-height="true" auto-focus="true" placeholder="placeholder颜色是红色的" fixed="true" name="remark" value="{{reason}}" 
+			bindinput='projectTimechange' />
+					</view>
+				
+			</view> -->
+
+</scroll-view>
+<view class="weui-footer__text" style="display:flex;margin: 20rpx 0;">
+				<button type="primary" disabled="{{sureType}}" style="background-color: rgb(85,85,85);width:40%;" bindtap="nopass">不通过</button>
+				<button type="primary" disabled="{{sureType}}" style="background-color: rgb(2,167,240);width:40%;" bindtap="pass">通过</button>
+			</view>
+<!-- <view class="weui-footer bottomShow">
+	<view class="weui-footer__text" style="display:flex;">
+		<button type="primary" style="background-color: rgb(85,85,85);width:40%;" bindtap="nopass">不通过</button>
+		<button type="primary" style="background-color: rgb(2,167,240);width:40%;" bindtap="pass">通过</button>
+	</view>
+
+</view> -->
+<view class="zan-dialog {{ showDialog ? 'zan-dialog--show' : '' }}">
+	<!-- 如果想点击弹窗外不隐藏，取消bindtap点击事件即可 -->
+	<view class="zan-dialog__mask" style="background-color: rgba(0,0,0,0.5);"/>
+	<view class="zan-dialog__container">
+		<view style='padding:10rpx 10rpx;'>
+			<view class="closenav" catchtap="closedig">
+				<mp-icon type="field" icon="close2" color="deepskyblue" size="{{25}}"></mp-icon>
+			</view>
+			<view style="width:100%;text-align:center;">选择审批人</view>
+			<view class="chooseman" style="width:100%;text-align:center;">
+				<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+					<view class="weui-cell__hd">
+						{{nextRole}}
+					</view>
+					<view class="weui-cell__hd hd_center">
+						<picker mode="selector" style="width:100%" range="{{parkdata}}" range-key="name" value="{{park}}"
+							bindchange="parkchange">
+							<view class="picker">{{parkdata[park]['name']}}</view>
+						</picker>
+					</view>
+					<view class="weui-cell__ft weui-cell__ft_in-access"></view>
+				</view>
+			</view>
+			<view class="issure">
+				<button type="primary" style="background-color: rgb(2,167,240);" bindtap="sure">确认</button></view>
+		</view>
+	</view>
+</view>

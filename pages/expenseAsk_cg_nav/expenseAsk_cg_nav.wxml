@@ -1,0 +1,96 @@
+<scroll-view class="page" scroll-y="true" style="max-height:{{scrollHeight}}px;">
+  <mp-cells ext-class="my-cells" title="">
+    <!-- -- -->
+    <!-- <mp-cell>
+      <view slot="title">相关客户</view>
+      <view class="chooseProject">
+        <input class="weui-input" value="{{khname}}" bindinput='khchange' placeholder="请输入客户名称" />
+      </view>
+      <view slot="footer">{{khname}}</view>
+    </mp-cell> -->
+    <!-- -- -->
+    <mp-cell value="请款类型" footer="{{moneyType}}"></mp-cell>
+    <!-- -- -->
+    <mp-cell>
+      <view slot="title">请款金额</view>
+      <!-- <view class="choosemoney">
+        <input class="weui-input" value="{{moneyNum}}" bindinput='moneyNumchange' placeholder="" />
+      </view> -->
+      <view slot="footer">￥{{moneyNum}}元</view>
+    </mp-cell>
+    <!-- -- -->
+    <mp-cell>
+      <view>比价过程文件(选填)</view>
+      <view wx:if="{{partword==''}}" style="width: 60%;margin: 20rpx 0;color:gray;">
+       无
+      </view>
+      <view wx:else style="width: 60%;margin: 20rpx 0;color: red;">
+       {{partword}}
+      </view>
+      <view hidden="{{partword==''}}" slot="footer" class="uploadshow" bindtap="partwordshow">{{partwordstyle}}</view>
+    </mp-cell>
+    <!-- -- -->
+    <mp-cell>
+      <view>合同（选填）</view>
+      <view wx:if="{{ht==null}}" style="width: 60%;margin: 20rpx 0;color:gray;">
+       无
+      </view>
+      <view wx:else style="width: 60%;margin: 20rpx 0;color: red;">
+       {{ht}}
+      </view>
+      <view hidden="{{ht==''}}" slot="footer" class="uploadshow" bindtap="htshow">{{htstyle}}</view>
+    </mp-cell>
+    <!-- -- -->
+    <mp-cell>
+      <view>发票（选填）</view>
+      <view wx:if="{{fp==''}}" style="width: 60%;margin: 20rpx 0;color:gray;">
+       无
+      </view>
+      <view wx:else style="width: 60%;margin: 20rpx 0;color: red;">
+       {{fp}}
+      </view>
+      <view hidden="{{fp==''}}" slot="footer" class="uploadshow" bindtap="fpshow">{{fpstyle}}</view>
+    </mp-cell>
+    <!-- -- -->
+    <mp-cell link>
+      <view>申请说明</view>
+      <view style="width: 60%;margin: 20rpx 0;color:gray;">
+        <!-- <textarea  class="weui-input" auto-height="true" value="{{askremark}}"  bindinput='askRemarkInput'
+          placeholder="请输入内容" /> -->
+          {{askremark}}
+      </view>
+      <view slot="footer"></view>
+    </mp-cell>
+    <!-- -- -->
+    <mp-cell>
+      <view>相关附件</view>
+      <view wx:if="{{uploadFileName==''}}" style="width: 60%;margin: 20rpx 0;color:gray;">
+       无
+      </view>
+      <view wx:else style="width: 60%;margin: 20rpx 0;color: red;">
+       {{uploadFileName}}
+      </view>
+      <view hidden="{{uploadFileName==''}}" slot="footer" class="uploadshow" bindtap="uploading">{{uploadText}}</view>
+    </mp-cell>
+    <!-- -- -->
+    <mp-cell link>
+      <view>备注</view>
+      <view style="width: 60%;margin: 20rpx 0;color:gray;">
+        <!-- <textarea  class="weui-input" auto-height="true" value="{{bzremark}}"  bindinput='bzRemarkInput'
+          placeholder="请输入内容" /> -->
+          {{bzremark}}
+      </view>
+      <view slot="footer"></view>
+    </mp-cell>
+    <!-- -- -->
+  </mp-cells>
+</scroll-view>
+<view class="bottomshow" hidden="{{showtype=='true'}}">
+  <button type="primary" class="buttonshow" bindtap="saveTo"
+      style="background-color: rgb(2,167,240);">删除</button>
+</view>
+<loading hidden="{{  loadingHidden }}">
+
+加载中...
+
+</loading>

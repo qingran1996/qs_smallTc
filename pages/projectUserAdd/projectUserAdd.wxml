@@ -1,0 +1,23 @@
+<!--miniprogram/pages/projectUserAdd/projectUserAdd.wxml-->
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__hd">
+         <view class="weui-cells weui-cells_after-title">
+                         <view class="weui-cell weui-cell_input">
+                             <view class="weui-cell__bd">
+                                 <input class="weui-input" placeholder="请输入姓名" bindinput="bindSearchChange"/>
+                             </view>
+                         </view>
+             </view>
+            <view class="weui-cells weui-cells_after-title" wx:for="{{userList}}" wx:key="{{index}}" bindtap="clickUser" data-id="{{item.id}}">
+             <view class="weui-cell">
+                     <view class="weui-cell__bd">{{item.name}}</view>
+                     <view class="weui-cell__ft weui-cell__ft_in-access">{{item.role_name}}</view>
+             </view>
+             </view>
+     </view>
+      <modal id="modal" hidden="{{confirmModuleHide}}" title="确认添加" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm"> </modal>
+</view>
+
+
+
+

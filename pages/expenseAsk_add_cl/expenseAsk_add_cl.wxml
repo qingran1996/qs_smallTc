@@ -1,0 +1,80 @@
+<scroll-view class="page" scroll-y="true" style="max-height:{{scrollHeight}}px;">
+  <mp-cells ext-class="my-cells" title="">
+    <!-- -- -->
+    <mp-cell link hover>
+      <view slot="title">出差开始日期</view>
+      <view class="chooseProject">
+        <picker mode="date" value="{{date}}" start="2000-01-01" end="{{enddate}}" bindchange="startdateChange">
+          <view class="picker">
+            {{startdate}}
+          </view>
+        </picker>
+      </view>
+      <view slot="footer"></view>
+    </mp-cell>
+    <!-- -- -->
+    <mp-cell link hover>
+      <view slot="title">出差结束日期</view>
+      <view class="chooseProject">
+        <picker mode="date" value="{{date}}" start="{{startdate}}" end="2099-12-31" bindchange="enddateChange">
+          <view class="picker">
+            {{enddate}}
+          </view>
+        </picker>
+      </view>
+      <view slot="footer"></view>
+    </mp-cell>
+    <!-- -- -->
+    <mp-cell>
+      <view slot="title">出行天数</view>
+      <!-- <view class="chooseProject">
+        <input class="weui-input" placeholder-style="color:#F76260" type="number" value="{{godate}}" bindinput='godatechange' placeholder="请输入天数" />
+      </view> -->
+      <view slot="footer" style="font-size: 30rpx;">{{godate}}天</view>
+    </mp-cell>
+    <!-- -- -->
+    <mp-cell value="请款类型" footer="{{moneyType}}"></mp-cell>
+    <!-- -- -->
+    <mp-cell wx:if="{{userPD!='商务部'}}" value="请款限额" footer="{{maxmoney}}"></mp-cell>
+    <mp-cell wx:else style="display:none;" value="请款限额" footer="{{maxmoney}}"></mp-cell>
+    <!-- -- -->
+    <mp-cell>
+      <view slot="title">请款金额</view>
+      <view class="choosemoney">
+        <input class="weui-input" placeholder-style="color:#F76260" value="{{moneyNum}}" bindinput='moneyNumchange' placeholder="请输入请款金额" />
+      </view>
+      <view slot="footer" style="font-size: 30rpx;">元</view>
+    </mp-cell>
+    <!-- -- -->
+    <mp-cell link>
+      <view>申请说明（选填）</view>
+      <view style="width: 60%;margin: 20rpx 0;">
+        <textarea class="weui-input" auto-height="true" value="{{askremark}}"  bindinput='askRemarkInput'
+					placeholder="请输入内容" />
+      </view>
+      <view slot="footer"></view>
+    </mp-cell>
+    <!-- -- -->
+    <mp-cell>
+      <view>相关附件（选填）</view>
+      <view style="width: 60%;margin: 20rpx 0;color:red;">
+       {{uploadFileName}}
+      </view>
+      <view slot="footer" class="uploadshow" bindtap="uploading">{{uploadText}}</view>
+    </mp-cell>
+    <!-- -- -->
+    <mp-cell link>
+      <view>备注（选填）</view>
+      <view style="width: 60%;margin: 20rpx 0;">
+        <textarea class="weui-input" auto-height="true" value="{{bzremark}}"  bindinput='bzRemarkInput'
+					placeholder="请输入内容" />
+      </view>
+      <view slot="footer"></view>
+    </mp-cell>
+    <!-- -- -->
+  </mp-cells>
+</scroll-view>
+<view class="bottomshow">
+  <button type="primary" class="buttonshow" bindtap="saveTo"
+      style="background-color: rgb(2,167,240);">保存</button>
+</view>

@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "mp-cells": "../../miniprogram_npm/weui-miniprogram/miniprogram_dist/cells/cells",
+    "mp-cell": "../../miniprogram_npm/weui-miniprogram/miniprogram_dist/cell/cell",
+    "mp-slideview": "../../miniprogram_npm/weui-miniprogram/miniprogram_dist/slideview/slideview",
+    "mp-icon": "../../miniprogram_npm/weui-miniprogram/miniprogram_dist/icon/icon",
+    "mp-halfScreenDialog": "../../miniprogram_npm/weui-miniprogram/miniprogram_dist/half-screen-dialog/half-screen-dialog",
+    "mp-actionSheet": "../../miniprogram_npm/weui-miniprogram/miniprogram_dist/actionsheet/actionsheet",
+    "mp-loading": "../../miniprogram_npm/weui-miniprogram/miniprogram_dist/loading/loading"
+  },
+  "navigationBarTitleText": "费用申请列表"
+}

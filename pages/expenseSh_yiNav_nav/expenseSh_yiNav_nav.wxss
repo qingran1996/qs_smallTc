@@ -1,0 +1,23 @@
+.page {
+  background-color: rgb(244,244,244);
+}
+.fg {
+  width: 100%;
+  text-align: center;
+  color: rgb(2,167,240);
+  padding: 30rpx 0;
+  font-size: 40rpx;
+  background-color: #fff;
+  border-bottom:1px dashed #000;
+}
+.pay{
+  margin: 30rpx 0;
+}
+.right_text {
+  margin-left: 10rpx;
+}
+.textbgc {
+  background-color: white;
+  margin-top: 20rpx;
+  color: gray;
+}

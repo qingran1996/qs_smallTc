@@ -1,0 +1,52 @@
+<view class="page">
+  <view class="weui-cells weui-cells_after-title" wx:for="{{list}}" wx:key="a">
+    <view class="navshow" wx:if="{{list.length!=0}}">
+      <view class="hdshow">
+        <view class="hd_left">
+          <view>{{item.zhiwei}}(<text class="text_title">{{item.name}}</text>)</view>
+          <view>{{item.time}}</view>
+        </view>
+
+        <view class="hd_right">
+          <icon wx:if="{{item.state==2}}" class="icon-box-img" type="success" style="margin-right: 20rpx"></icon>
+          <icon wx:elif="{{item.state==1}}" class="icon-box-img" type="success" style="margin-right: 20rpx"></icon>
+          <icon wx:elif="{{item.state==3}}" class="icon-box-img" type="warn" style="margin-right: 20rpx"></icon>
+          <icon wx:else class="icon-box-img" type="waiting" style="margin-right: 20rpx"></icon>
+
+          <text>{{item.statename}}</text>
+        </view>
+      </view>
+
+      <view wx:if="{{item.zhiwei=='总经理审批'}}" style="display:flex;margin: 20rpx 0;height:100rpx;line-height:100rpx;">
+        <view style="flex:1;">总经理签名</view>
+        <view style="text-align: right;">
+          <image class="signimage" style="width: 100rpx;height: 100rpx;border-radius: 10rpx;" src='{{sign_image}}'
+            mode="scaleToFill" binderror="binderrorimg" catchtap='sighlook'></image>
+        </view>
+      </view>
+
+      <view wx:elif="{{item.zhiwei=='财务经理审批'}}" style="display:flex;margin: 20rpx 0;height:100rpx;line-height:100rpx;">
+        <view style="flex:1;">发票是否签收</view>
+        <view style="text-align: right;">
+          <radio wx:if="{{isHaveInvoice==1}}" value="" color="rgb(2,167,240)" checked="checked" />
+          <radio wx:else style="display: none;" value="" color="rgb(2,167,240)" checked="checked" /> <text
+            wx:if="{{isHaveInvoice==1}}">是</text><text wx:else>否</text>
+        </view>
+      </view>
+      <!-- <view class="weui-cell">
+        <view class="weui-cell__bd">我的签名</view>
+        <view class="weui-cell__ft">
+          123
+        </view>
+      </view> -->
+
+      <view class="hdshow textbgc">
+        <textarea disabled='true' class="weui-textarea" name="remark" value="{{item.remark}}"
+          bindinput='projectTimechange' />
+        </view>
+        
+    </view>
+    <view class="navshow" wx:else>暂无信息</view>
+  </view>
+
+</view>

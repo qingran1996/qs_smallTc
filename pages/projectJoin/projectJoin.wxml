@@ -1,0 +1,65 @@
+<!--miniprogram/pages/projectStart/projectStart.wxml-->
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__hd">
+     <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">项目名称</view>
+                    </view>
+                    <view class="weui-cell__bd">
+                        {{name}}
+                    </view>
+                </view>
+                <view class="weui-cell weui-cell_input">
+                                    <view class="weui-cell__hd">
+                                        <view class="weui-label">项目编号</view>
+                                    </view>
+                                    <view class="weui-cell__bd">
+                                       {{no}}
+                                    </view>
+                                </view>
+                 <view class="weui-cells weui-cells_after-title">
+                            <view class="weui-cell">
+                             <view class="weui-cell__hd">
+                                                                    <view class="weui-label">项目描述</view>
+                                                                </view>
+                                <view class="weui-cell__bd">
+                                    {{desc}}
+                                </view>
+                            </view>
+                        </view>
+                <view class="weui-cell weui-cell_input">
+                                    <view class="weui-cell__hd">
+                                        <view class="weui-label">开始日期</view>
+                                    </view>
+                                    <view class="weui-cell__bd">
+                                        {{start_date_show}}
+                                    </view>
+                                </view>
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">结束日期</view>
+                    </view>
+                    <view class="weui-cell__bd">
+                        {{end_date_show}}
+                    </view>
+                </view>
+                <view class="weui-cells weui-cells_after-title">
+                            <view class="weui-cell weui-cell_switch">
+                                <view class="weui-cell__bd">是否外派</view>
+                                <view class="weui-cell__ft">
+                                    {{is_expatriated_show}}
+                                </view>
+                            </view>
+                 </view>
+
+     <view class="page__bd page__bd_spacing page__bd_margin">
+      <view class="page__bd page__bd_spacing page__bd_margin">
+                   <button class='weui-btn'  type="primary" bintap="join">参与</button>
+         </view>
+    </view>
+
+    </view>
+     </view>
+</view>
+

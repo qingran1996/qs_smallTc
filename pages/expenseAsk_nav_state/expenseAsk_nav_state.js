@@ -1,0 +1,165 @@
+var app = getApp()
+Page({
+    data: {
+        projectTime: '事情办得不错', //项目评价
+        list:[],
+        sign_image: '',
+        isHaveInvoice: '',
+        pjData: [
+            {zhiwei: '商务总监',name: '顾小林',state: 1,remark:'干的不错',time: '2020年10月10日'},
+            {zhiwei: '商务总监',name: '王文涛',state: 2,remark:'等待审核',time: '2020年10月10日'},
+            {zhiwei: '商务总监',name: '丁宏翔',state: 2,remark:'等待审核',time: '2020年10月10日'}
+        ]
+    },
+     // 项目评价
+     projectTimechange: function (e) {
+         console.log(e.detail.value)
+        // this.setData({
+        //     projectTime: e.detail.value
+        // });
+        // console.log(this.data.projectTime)
+    },
+    sighlook() {
+      let images = []
+      images.push(this.data.sign_image)
+      wx.previewImage({
+        current: this.data.sign_image, // 当前显示图片的http链接  
+        urls: images // 需要预览的图片http链接列表  
+      })
+    },
+    getmyimage: function () {
+      let that = this
+      var url = app.globalData.URL + '/user/getUserSign';
+      // let form1 = new FormData()
+      // form1.append('file',that.data.partwordpath)
+      wx.request({
+          url: url,
+          method: 'POST',
+          data: {
+              id: app.data.userMess.id
+          },
+          success: function (res) {
+              console.log(res)
+              if (res.data.code == 0) {
+                  that.setData({
+                      sign_image: res.data.data != null ? app.data.qs.myUploadImg + res.data.data.attachPath : ''
+                  })
+              }
+          }
+      });
+  },
+    getdata: function (id) {
+        let that = this
+        var url = app.globalData.URL + '/expenses/expensesDetailState';
+        wx.request({
+            url: url,
+            method: 'POST',
+            data: {
+              expensesId: id
+            },
+            success: function (res) {
+              //console.info(that.data.list);
+              var list = that.data.list;
+              let data = res.data.data
+              console.log(data)
+              if (data.length != 0) {
+                setTimeout(function () {
+                  for(let i=0;i<data.length;i++) {
+                      let obj = {}
+                      obj.name = data[i].userName
+                      // if (data[i].state==1) {
+                      //   obj.statename = '提交申请'
+                      // } else if(data[i].state==2) {
+                      //   obj.statename = '通过'
+                      // } else if(data[i].state==3) {
+                      //   obj.statename = '未通过'
+                      // } else {
+                      //   obj.statename = '待审核'
+                      // }
+                      obj.statename = data[i].stateName
+                      obj.state = data[i].state
+                      // obj.statename = data[i].status=='通过'?'通过':'待审核'
+                      obj.zhiwei = data[i].roleName
+                      obj.remark = data[i].comment
+                      obj.time = data[i].endTime!=null?app.formatDate(data[i].endTime):''
+                      list.push(obj)
+                  }
+                  that.setData({
+                    list: list
+                  });
+                },1000)
+                
+              } else {
+                
+              }
+      
+      
+            }
+          });
+    },
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad: function (options) {
+       console.log(options.isHaveInvoice)
+       this.setData({
+        isHaveInvoice: options.isHaveInvoice
+       })
+       this.getmyimage()
+        this.getdata(options.id)
+        this.data.pmheight = wx.getSystemInfoSync().windowHeight-50 +"px"
+        // console.log(this.data.pmheight)
+        wx.setNavigationBarTitle({
+            title: '审核状态',
+          })
+    },
+
+    /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
+    onReady: function () {
+
+    },
+
+    /**
+     * 生命周期函数--监听页面显示
+     */
+    onShow: function () {
+
+    },
+
+    /**
+     * 生命周期函数--监听页面隐藏
+     */
+    onHide: function () {
+
+    },
+
+    /**
+     * 生命周期函数--监听页面卸载
+     */
+    onUnload: function () {
+
+    },
+
+    /**
+     * 页面相关事件处理函数--监听用户下拉动作
+     */
+    onPullDownRefresh: function () {
+
+    },
+
+    /**
+     * 页面上拉触底事件的处理函数
+     */
+    onReachBottom: function () {
+
+    },
+
+    /**
+     * 用户点击右上角分享
+     */
+    onShareAppMessage: function () {
+
+    }
+})

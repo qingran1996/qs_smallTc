@@ -1,0 +1,102 @@
+/* miniprogram/pages/login/login.wxss */
+.login{
+  margin-top: 180rpx;
+  margin-left: 98rpx;
+  margin-right: 98rpx;
+}
+.login_tit{
+  display: flex;
+  margin-bottom: 20rpx;
+}
+.login_tit view{
+  flex: 1;
+  text-align: center;
+  font-size: 36rpx;
+  color: #272727;
+  padding-bottom: 18rpx;
+}
+.login_tit view.choosed {
+  border-bottom: 3px solid #67cbc8;
+}
+.login_list{
+  height: 40rpx;
+  margin-top: 70rpx;
+  padding-bottom: 40rpx;
+  border-bottom: 1px solid #f1f1f1;
+  display: flex;
+}
+.login_list input{
+  height:60rpx;
+  min-height: 0;
+  flex: 1;
+  line-height: 30rpx;
+  font-size: 36rpx;
+  color: #272727;
+}
+.img1{
+  width: 36rpx;
+  height: 30rpx;
+  margin-top: 18rpx;
+  margin-right: 30rpx;
+}
+.img2{
+  width: 46rpx;
+  height: 34rpx;
+  margin-top: 14rpx;
+  margin-right: 20rpx;
+}
+.img3{
+  width: 34rpx;
+  height: 40rpx;
+  margin-top: 6rpx;
+  margin-right: 32rpx;
+}
+.login_list navigator{
+  margin-top: 14rpx;
+  line-height: 30rpx;
+  font-size: 36rpx;
+  color: #c5c5c5;
+}
+/* .auto_login{
+  min-height: 234rpx;
+} */
+.btn_code{
+  min-width: 250rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 30rpx;
+  background: #67cbc8;
+  color: #fff;
+}
+.login_btn{
+  margin-top: 86rpx;
+  margin-bottom: 34rpx;
+  background: #67cbc8;
+  color: #fff;
+}
+.register_btn{
+  border: 1px solid #67cbc8;
+  color: #67cbc8;
+}
+.login_btn, .register_btn{
+  width: 100%;
+  height: 94rpx;
+  line-height: 94rpx;
+  border-radius: 40rpx;
+  text-align: center;
+  font-size: 40rpx;
+}
+.point_mess{
+  margin-top:  160rpx;
+  margin-left:98rpx;
+  margin-right:98rpx;
+}
+.point_mess .point_t{
+ font-size:30rpx;
+ color:#aeaeae;
+}
+.point_mess .point_m{
+ padding-left: 20rpx;
+ font-size:26rpx;
+ color:#aeaeae;
+}

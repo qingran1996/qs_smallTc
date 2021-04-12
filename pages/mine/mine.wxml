@@ -1,0 +1,133 @@
+<!--miniprogram/pages/mine/mine.wxml-->
+<view class="page" scroll-top="{{scrollTop}}" scroll-y="true" style="max-height:{{scrollHeight}}px;">
+  <view class="page__hd">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">头像</view>
+        <view class="weui-cell__ft">
+          <image class="header" src='{{user_image}}' binderror="binderrorimg"></image>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">性别</view>
+        <view class="weui-cell__ft">
+          <image class="sex" src="../../images/icon/gender_{{gender}}.png" /> 
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-cells weui-cells_after-title"> 
+      <view class="weui-cell">
+        <view class="weui-cell__bd">姓名</view>
+        <view class="weui-cell__ft"> {{name}}</view>
+      </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">邮箱</view>
+        <view class="weui-cell__ft">{{email}}</view>
+      </view>
+
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">工号</view>
+        <view class="weui-cell__ft">{{work_id}}</view>
+      </view>
+
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">部门</view>
+        <view class="weui-cell__ft">{{dept_name}}</view>
+      </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">角色</view>
+        <view class="weui-cell__ft" style="width:500rpx;">{{role_name}}</view>
+      </view>
+    </view>
+    <view wx:if="{{isshow_sign}}" class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">我的签名</view>
+        
+        <view wx:if="{{sign_image==''}}" class="weui-cell__ft" style="color: skyblue" bindtap="uploadimage">
+         待上传
+        </view>
+        <view wx:else class="weui-cell__ft">
+          <image class="signimage" src='{{sign_image}}' mode="scaleToFill" binderror="binderrorimg" bindtap="bottomshow"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="bank">
+    <view class="fg">个人支付信息</view>
+    <!-- -- -->
+    <mp-cells ext-class="my-cells" title="">
+      <mp-actionSheet bindactiontap="btnClick" bindclose="close" show="{{showActionsheet}}" actions="{{groups}}"></mp-actionSheet>
+      <mp-halfScreenDialog bindbuttontap="buttontap" close="buttontapclose" show="{{show}}" maskClosable="{{true}}" closabled="{{true}}">
+        <view slot="title">银行卡信息(可修改)</view>
+        <view slot="desc">
+          <mp-cells ext-class="my-cells" title="">
+            <mp-cell>
+              <view slot="title">员工户名</view>
+              <view slot="footer">
+                <input class="weui-input" value="{{bankusername}}" bindinput='bankusernamechange' placeholder="{{bankusername}}" />
+              </view>
+            </mp-cell>
+            <mp-cell>
+              <view slot="title">银行卡号</view>
+              <view slot="footer">
+                <input class="weui-input" value="{{banknum}}" bindinput='banknumchange' placeholder="{{banknum}}" />
+              </view>
+            </mp-cell>
+            <mp-cell>
+              <view slot="title">开户行</view>
+              <view slot="footer">
+                <input class="weui-input" value="{{bankshowname}}" bindinput='banknamechange' placeholder="{{bankshowname}}" />
+              </view>
+            </mp-cell>
+          </mp-cells>
+          <view>
+            <button type="primary" style="background-color: #67cbc8;" bindtap="savebank">保存</button>
+          </view>
+        </view>
+      </mp-halfScreenDialog>
+      <!-- -- -->
+      <mp-cell wx:if="{{wages!=''}}" link bindtap="wagesnav">
+        <view slot="title">工资卡</view>
+        <view class="chooseProject">{{wages}}</view>
+        <view slot="footer"></view>
+      </mp-cell>
+      <mp-cell wx:else link bindtap="addwages">
+        <view slot="title">工资卡</view>
+        <view class="chooseProject"></view>
+        <view slot="footer">添加</view>
+      </mp-cell>
+      <!-- -- -->
+      <mp-cell wx:if="{{bankId!=''}}" link bindtap="banknav">
+        <view slot="title">银行卡</view>
+        <view class="chooseProject">{{bankId}}</view>
+        <view slot="footer"></view>
+      </mp-cell>
+      <mp-cell wx:else link bindtap="addbank">
+        <view slot="title">银行卡</view>
+        <view class="chooseProject"></view>
+        <view slot="footer">添加</view>
+      </mp-cell>
+      <!-- -- -->
+    </mp-cells>
+  </view>
+</view>
+
+<view wx:if="{{!showActionsheet}}" class="weui-footer weui-footer_fixed-bottom">
+
+  <view class='weui-footer__text'>
+    <button type="primary" style="background-color: #67cbc8;" bindtap="qiehuan">切换账号</button>
+  </view>
+
+</view>

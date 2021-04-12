@@ -1,0 +1,180 @@
+<view class="page">
+  <view class="page__bd">
+
+    <mp-cells ext-class="my-cells" title="项目概况">
+      <view class="weui-cell weui-cell_access wecolor">
+        <view class="weui-cell__hd">
+          <view class="weui-label">项目名称</view>
+        </view>
+        <view class="weui-cell__bd" style="text-align:center;">
+          <picker mode="selector" style="width:100%" range="{{parkdata}}" range-key="name" value="{{park}}"
+            bindchange="parkchange">
+            <view class="picker" style="color:black;">{{parkdata[park]['name']}}</view>
+          </picker>
+        </view>
+        <view class="weui-cell__ft"></view>
+      </view>
+      <!-- <mp-cell value="项目号" footer="{{parkdata[park]['num']}}"></mp-cell> -->
+      <mp-cell>
+        <view slot="title">项目号</view>
+        <view class="chooseProject" style="text-align:center;">
+          {{parkdata[park]['num']}}
+        </view>
+        <view slot="footer"></view>
+      </mp-cell>
+      <mp-cell link>
+        <view slot="title">所属部门</view>
+        <view class="chooseProject" style="text-align:center;">
+          <picker mode="selector" style="width:100%" range="{{deptdata}}" range-key="name" value="{{deptid}}"
+            bindchange="deptchange">
+            <view class="picker" style="color:black;">{{deptdata[deptid]['name']}}</view>
+          </picker>
+        </view>
+        <view slot="footer"></view>
+      </mp-cell>
+      <mp-cell>
+        <view slot="title">项目阶段</view>
+        <view class="chooseProject" style="text-align:center;">
+          {{parkdata[park]['isDinished']}}
+        </view>
+        <view slot="footer"></view>
+      </mp-cell>
+      <mp-cell>
+        <view slot="title">发放金额</view>
+        <view class="chooseProject" style="text-align:center;">
+          <input class="weui-input" placeholder-style="color:#F76260" value="{{payforname}}"
+            bindinput='payfornamechange' placeholder="请输入金额" />
+        </view>
+        <view slot="footer"></view>
+      </mp-cell>
+    </mp-cells>
+
+    <mp-cells ext-class="my-cells" title="项目奖金分配">
+      <view class="part" wx:for="{{moneyFP}}" wx:for-item="item" data-index="{{index}}" wx:key="a">
+        <view class="showtitle">{{item.roleName}}(<text class="text_title">{{item.positionName}}</text>)</view>
+        <mp-cells ext-class="my-cells" class="bt_title" title="">
+          <!-- <view class="title">
+            <view class="titlenew">姓名</view>
+            <view class="titlenew">占比</view>
+            <view class="titlenew">金额</view>
+          </view> -->
+          <!-- <view class="person" wx:if="{{item.namedata.length!=0}}">
+            <view class="title titlecolor" wx:for="{{item.namedata}}" wx:for-item="cell" wx:key="b">
+              <view class="titlenew">{{cell.name}}</view>
+              <view class="titlenew">{{cell.bar}}</view>
+              <view class="titlenew">{{cell.num}}</view>
+            </view>
+          </view> -->
+          <mp-cell>
+            <view slot="title" style="width: 200rpx;">姓名</view>
+            <view class="chooseProject" style="text-align:center;width: 100%;">占比</view>
+            <view slot="footer" style="width: 200rpx;">金额</view>
+          </mp-cell>
+          <mp-slideview buttons="{{slideButtons}}" bindbuttontap="slideButtonTap" wx:for="{{item.namedata}}"
+            wx:for-item="cell" wx:for-index="index" wx:key="b" data-index="{{index}}" data-id="{{item.id}}">
+
+            <mp-cell>
+              <view slot="title" style="width: 200rpx;">{{cell.name}}</view>
+              <view class="chooseProject" style="text-align:center;width: 100%;">
+                {{cell.bar}}%
+              </view>
+              <view slot="footer" style="width: 200rpx;">{{cell.num}}</view>
+            </mp-cell>
+          </mp-slideview>
+          <view class="person" hidden="{{item.id==0&&moneyFP[0].namedata.length!=0}}">
+            <view class="personAdd" bindtap="jump_projectAdd" data-id="{{item.id}}">
+              <mp-icon type="field" icon="add2" color="deepskyblue" size="{{25}}"></mp-icon>
+              <text class="personText">添加{{item.zhiwei}}</text>
+            </view>
+          </view>
+        </mp-cells>
+      </view>
+    </mp-cells>
+
+    <!-- <mp-cells title="">
+      <mp-cell link hover value="有hover效果" footer="说明文字">
+        <image slot="footer" src="{{icon}}" style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;">
+        </image>
+      </mp-cell>
+    </mp-cells> -->
+    <view class="bottomshow">
+      <button type="primary" class="buttonshow" loading="{{sureType}}" disabled="{{sureType}}" bindtap="saveTo" style="background-color: rgb(2,167,240);">申请</button>
+    </view>
+  </view>
+</view>
+<!-- -自定义弹框- -->
+<!--弹窗-->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+  <view class="modal-title">添加专业负责人</view>
+  <view class="modal-content">
+    <view class="modal-input">
+      <!-- -- -->
+      <mp-cells ext-class="my-cells" title="" style="width:100%">
+        <mp-cell link wx:if="{{showId!=0}}">
+          <view slot="title">姓名</view>
+          <view class="chooseProject" style="text-align:center;">
+            <picker mode="selector" style="width:100%" range="{{persondata}}" range-key="name" value="{{personId}}"
+              bindchange="personchange">
+              <view class="picker" style="color:black;">{{persondata[personId]['name']}}</view>
+            </picker>
+          </view>
+          <view slot="footer"></view>
+        </mp-cell>
+        <mp-cell  wx:else>
+          <view slot="title">姓名</view>
+          <!-- <view class="chooseProject" style="text-align:center;">
+            <picker mode="selector" style="width:100%" range="{{persondata}}" range-key="name" value="{{personId}}"
+              bindchange="personchange">
+              <view class="picker" style="color:black;">{{persondata[personId]['name']}}</view>
+            </picker>
+          </view> -->
+          <view slot="footer">{{username}}</view>
+        </mp-cell>
+        <mp-cell value="占比" footer="{{point}}%"></mp-cell>
+        <mp-cell>
+          <view slot="title">金额</view>
+          <view class="chooseProject" style="text-align:center;">
+            <input class="weui-input" placeholder-style="color:#F76260" value="{{addmoney}}" bindinput='addmoneychange'
+              placeholder="请输入金额" />
+          </view>
+          <view slot="footer"></view>
+        </mp-cell>
+      </mp-cells>
+      <!-- -- -->
+    </view>
+  </view>
+  <view class="modal-footer">
+    <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+    <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>
+  </view>
+</view>
+<!-- -- -->
+<view class="zan-dialog {{ showDialog ? 'zan-dialog--show' : '' }}">
+	<!-- 如果想点击弹窗外不隐藏，取消bindtap点击事件即可 -->
+	<view class="zan-dialog__mask" style="background-color: rgba(0,0,0,0.5);" />
+	<view class="zan-dialog__container">
+		<view style='padding:10rpx 10rpx;'>
+			<view class="closenav" bindtap="closedig">
+				<mp-icon type="field" icon="close2" color="deepskyblue" size="{{25}}"></mp-icon>
+			</view>
+			<view style="width:100%;text-align:center;">选择审批人</view>
+			<view class="chooseman" style="width:100%;text-align:center;">
+				<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+					<view class="weui-cell__hd" style="width:100%;text-align:left;">
+						商务总监
+					</view>
+					<view class="weui-cell__hd hd_center" style="width:100%;text-align:left;">
+						<picker mode="selector" style="width:100%" range="{{userlist}}" range-key="name" value="{{userId}}"
+							bindchange="userchange">
+							<view class="picker">{{userlist[userId]['name']}}</view>
+						</picker>
+					</view>
+					<view class="weui-cell__ft weui-cell__ft_in-access"></view>
+				</view>
+			</view>
+			<view class="issure">
+				<button type="primary" style="background-color: rgb(2,167,240);" bindtap="sure">确认</button></view>
+		</view>
+	</view>
+</view>

@@ -1,0 +1,157 @@
+<view class="page">
+  <mp-cells ext-class="my-cells" title="">
+    <mp-cell value="付款方式" footer="{{fkstyle}}"></mp-cell>
+    <mp-cell value="所属部门" footer="{{park}}"></mp-cell>
+    <mp-cell link>
+      <view slot="title">发起身份</view>
+      <view style="text-align:center;">
+        <picker mode="selector" style="width:100%" range="{{onlyUserData}}" range-key="" value="{{onlyId}}"
+          bindchange="onlychange">
+          <view class="picker">{{onlyUserData[onlyId]}}</view>
+        </picker>
+      </view>
+      <view slot="footer"></view>
+    </mp-cell>
+    <mp-cell value="申请日期" footer="{{date}}"></mp-cell>
+    <mp-cell>
+      <view>是否关联项目</view>
+      <view slot="footer">
+        <view class="body-view">
+          <switch checked="{{isconnect}}" color="rgb(22,155,213)" bindchange="switchChange" />
+        </view>
+      </view>
+    </mp-cell>
+    <mp-cell link hover class="{{isprojectshow?'show':'hide'}}">
+      <view slot="title">项目名称</view>
+      <view class="chooseProject">
+        <picker mode="selector" style="width:100%" range="{{projectdata}}" range-key="name" value="{{projectdataId}}"
+          bindchange="projectchange">
+          <view class="picker">{{projectdata[projectdataId]['name']}}</view>
+        </picker>
+      </view>
+      <view slot="footer"></view>
+    </mp-cell>
+    <mp-cell class="{{isprojectshow?'show':'hide'}}">
+      <view slot="title">项目地址</view>
+      <view class="chooseProject">{{projectdata[projectdataId]['address']}}</view>
+    </mp-cell>
+  </mp-cells>
+  <!-- -- -->
+  <scroll-view scroll-y="true" style="max-height:{{scrollHeight}}px;">
+    <mp-cells wx:for="{{moneyData}}" wx:key="a" ext-class="my-cells" title="{{item.type}}">
+      <!-- <mp-slideview buttons="{{slideButtons}}" bindbuttontap="slideButtonTap">
+        <mp-cell hover link value="{{item.name}}" footer="{{item.num}}元" bindtap="moneyNav" data-id="{{item.id}}" data-type="{{item.type}}"></mp-cell>
+      </mp-slideview> -->
+      <mp-cell hover link value="{{item.name}}" footer="￥{{item.num}}元" bindtap="moneyNav" data-id="{{item.id}}" data-type="{{item.type}}"></mp-cell>
+      
+    </mp-cells>
+  </scroll-view>
+
+  <!-- -- -->
+</view>
+<!-- -- -->
+<view class="addExpense" bindtap="addexpense">
+  <!-- <text>新增费用</text> -->
+  <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange"
+    value="{{multiIndex}}" range="{{multiArray}}">
+    <view class="picker">
+      <mp-icon type="field" icon="add2" color="rgb(2,167,240)" size="{{30}}"></mp-icon>
+      <text>新增费用</text>
+    </view>
+  </picker>
+</view>
+<!-- -- -->
+<view class="pay">
+  <view class="fg">支付信息</view>
+  <!-- -- -->
+  <mp-cells wx:if="{{showstyle==1}}" ext-class="my-cells" title="">
+    <mp-cell value="员工姓名" footer="{{username}}"></mp-cell>
+    <mp-cell value="员工编号" footer="{{usernum}}"></mp-cell>
+    <mp-cell link>
+      <view slot="title">选择转账</view>
+      <view class="chooseProject">
+        <picker mode="selector" style="width:100%" range="{{bankdata}}" range-key="name" value="{{bankId}}"
+          bindchange="bankchange">
+          <view class="picker">{{bankdata[bankId]['name']}}</view>
+        </picker>
+      </view>
+      <view slot="footer"></view>
+    </mp-cell>
+    <mp-cell value="员工户名" footer="{{bankshow.user}}"></mp-cell>
+    <mp-cell value="银行卡号" footer="{{bankshow.banknum}}"></mp-cell>
+    <mp-cell value="开户行" footer="{{bankshow.bankname}}"></mp-cell>
+    <mp-cell>
+      <view slot="title">支付合计金额</view>
+      <view slot="footer" style="color: red;">￥{{moneyTotal}}元</view>
+    </mp-cell>
+  </mp-cells>
+  <!-- -- -->
+  <mp-cells wx:else ext-class="my-cells" title="">
+    <mp-cell>
+      <view class="lengtgtitle" slot="title">销售方户名</view>
+      <view class="chooseProject">
+        <input class="weui-input" placeholder-style="color:#F76260" value="{{payforname}}" bindinput='payfornamechange' placeholder="请输入户名" />
+      </view>
+      <view class="searchbutton" slot="footer">
+        <mp-icon bindtap="gotosearch" icon="search" color="black" size="{{25}}"></mp-icon>
+        <!-- <span bindtap="gotosearch">历史记录</span> -->
+      </view>
+    </mp-cell>
+    <mp-cell>
+      <view class="lengtgtitle" slot="title">开户行</view>
+      <view class="chooseProject">
+        <input class="weui-input" placeholder-style="color:#F76260" value="{{payforbank}}" bindinput='payforbankchange' placeholder="请输入开户银行" />
+      </view>
+    </mp-cell>
+    <mp-cell>
+      <view class="lengtgtitle" slot="title">银行卡号</view>
+      <view class="chooseProject">
+        <input class="weui-input" placeholder-style="color:#F76260" value="{{banknum}}" bindinput='banknumchange' placeholder="请输入银行卡号" />
+      </view>
+    </mp-cell>
+
+    <mp-cell>
+      <textarea style="color: var(--weui-FG-1)"  bindinput="bindlinechange" type="text" maxlength="400" placeholder-style="color:var(--weui-FG-1)" placeholder="模板请按照 名称: xxxxx 开户行: xxxxx 银行卡号: xxxxxx" />
+    </mp-cell>
+    
+    <mp-cell>
+      <view slot="title">支付合计金额</view>
+      <view slot="footer" style="color: red;">￥{{moneyTotal}}元</view>
+    </mp-cell>
+  </mp-cells>
+  <!-- -- -->
+</view>
+<!-- -- -->
+<view class="option">
+  <button type="primary" class="buttonshow" loading="{{sureType}}" disabled="{{sureType}}" bindtap="sumbit" style="background-color: rgb(2,167,240);">申请</button>
+</view>
+
+<view class="zan-dialog {{ showDialog ? 'zan-dialog--show' : '' }}">
+  <!-- 如果想点击弹窗外不隐藏，取消bindtap点击事件即可 -->
+  <view class="zan-dialog__mask" style="background-color: rgba(0,0,0,0.5);" />
+  <view class="zan-dialog__container">
+    <view style='padding:10rpx 10rpx;'>
+      <view class="closenav" bindtap="closedig">
+        <mp-icon type="field" icon="close2" color="deepskyblue" size="{{25}}"></mp-icon>
+      </view>
+      <view style="width:100%;text-align:center;">选择审批人</view>
+      <view class="chooseman" style="width:100%;text-align:center;">
+
+        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__hd" style="width:100%;text-align:left;">
+            {{users}}
+          </view>
+          <view class="weui-cell__hd hd_center">
+            <picker mode="selector" style="width:100%" range="{{parkdata}}" range-key="name" value="{{park1}}"
+              bindchange="parkchange">
+              <view class="picker">{{parkdata[park1]['name']}}</view>
+            </picker>
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+      </view>
+      <view class="issure">
+        <button type="primary" style="background-color: rgb(2,167,240);" bindtap="sure">确认</button></view>
+    </view>
+  </view>
+</view>

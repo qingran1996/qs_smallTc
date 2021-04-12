@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "mp-cells": "../../miniprogram_npm/weui-miniprogram/miniprogram_dist/cells/cells",
+    "mp-cell": "../../miniprogram_npm/weui-miniprogram/miniprogram_dist/cell/cell",
+    "mp-icon": "../../miniprogram_npm/weui-miniprogram/miniprogram_dist/icon/icon",
+    "mp-dialog": "../../miniprogram_npm/weui-miniprogram/miniprogram_dist/dialog/dialog",
+    "mp-halfScreenDialog": "../../miniprogram_npm/weui-miniprogram/miniprogram_dist/half-screen-dialog/half-screen-dialog",
+    "mp-actionSheet": "../../miniprogram_npm/weui-miniprogram/miniprogram_dist/actionsheet/actionsheet"
+  },
+  "navigationBarTitleText": "出差申请"
+}

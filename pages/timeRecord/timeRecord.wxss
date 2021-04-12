@@ -1,0 +1,80 @@
+/* miniprogram/pages/allProjectList/allProjectList.wxss */
+.weui-flex__item{
+border:1rpx solid #ddd;
+text-align:center;
+vertical-align:middle;
+font-size:24rpx;
+line-height:60rpx;
+}
+
+.weui-flex__item .placeholder{
+line-height:60rpx;
+}
+.weui-flex__item .placeholder1{
+line-height:40rpx;
+}
+.buttom_view{
+ margin-bottom:92rpx;
+}
+.float_button{
+position: fixed;
+bottom:0;
+width:95%;
+}
+
+.weui-btn{
+ background-color:#333;
+}
+
+.project{
+float:left;
+margin-left:10rpx;
+}
+
+.project_label{
+font-weight:bold;
+color:gray;
+}
+
+.project_name{
+color:#333
+ }
+
+.project_audit_state_1{
+ color:green
+ }
+.project_audit_state_0{
+  color:blue
+}
+.project_audit_state_2{
+   color:red
+}
+.project_audit_state_9{
+    color:red
+}
+
+.project_image{
+ float:left;
+ margin-left:10rpx;
+ width:auto;
+}
+
+.project_image_item{
+width:60rpx;
+height:60rpx;
+margin-left:10rpx;
+}
+
+.project_image_button{
+width:60rpx;
+height:60rpx;
+}
+
+.audit_item{
+margin-top:10rpx;
+}
+
+.weui-msg__icon-area{
+ color:red;
+ font-size:20rpx;
+}

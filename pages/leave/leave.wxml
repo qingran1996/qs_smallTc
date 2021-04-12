@@ -1,0 +1,111 @@
+<!--miniprogram/pages/leave/leave.wxml-->
+<form bindsubmit="formSubmit" class="form">
+    <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+        <view class="page__hd">
+            <view class="weui-cells weui-cells_after-title">
+
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">请假类型</view>
+                    </view>
+                    <view class="weui-cell__ft">
+                        <picker mode="selector" style="width:100%" range="{{leaveTypeList}}" range-key="name"
+                            value="{{workType}}" bindchange="bindLeaveTypeChange">
+                            <view class="picker">{{leaveTypeList[leaveType]['name']}}</view>
+                        </picker>
+                    </view>
+                </view>
+
+
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell">
+                        <view class="weui-cell__hd">
+                            <view class="weui-label">开始时间</view>
+                        </view>
+                        <view class="weui-cell__ft">
+                            <picker mode="multiSelector" value="{{fromDate}}" bindchange="changeFromDate"
+                                bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
+                                <view class="picker">
+                                    {{dateTimeArray[0][fromDate[0]]}}-{{dateTimeArray[1][fromDate[1]]}}-{{dateTimeArray[2][fromDate[2]]}}
+                                    {{dateTimeArray[3][fromDate[3]]}}:{{dateTimeArray[4][fromDate[4]]}}
+                                </view>
+                            </picker>
+                        </view>
+                    </view>
+                </view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell">
+                        <view class="weui-cell__hd">
+                            <view class="weui-label">结束时间</view>
+                        </view>
+                        <view class="weui-cell__ft">
+                            <picker mode="multiSelector" value="{{toDate}}" bindchange="changeToDate"
+                                bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
+                                <view class="picker">
+                                    {{dateTimeArray1[0][toDate[0]]}}-{{dateTimeArray1[1][toDate[1]]}}-{{dateTimeArray1[2][toDate[2]]}}
+                                    {{dateTimeArray1[3][toDate[3]]}}:{{dateTimeArray1[4][toDate[4]]}}
+                                </view>
+                            </picker>
+                        </view>
+                    </view>
+                </view>
+
+
+
+
+
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">请假时长(h)</view>
+                    </view>
+                    <view class="weui-cell__ft">
+                        <input class="weui-input" bindinput="bindDurationInput" value="{{duration}}" placeholder="时长" />
+                    </view>
+                </view>
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">请假说明</view>
+                    </view>
+                    <view class="weui-cell__ft">
+
+                        <textarea class="weui-textarea" placeholder="请输入说明" bindinput="bindReasonInput"
+                            style="height: 3.3em" />
+
+                        </view>
+                                        </view>
+    <view class="weui-cell weui-cell_input">
+                                            <view class="weui-cell__hd">
+                                                <view class="weui-label">图片</view>
+                                            </view>
+                                            <view class="weui-cell__ft">
+
+                                                            <view class="project_image" >
+                                                                    <image class="project_image_button"
+                                                                       type="default" size="mini" bindtap="chooseImage" src="../../images/project/upload.png"></image>
+                                                                   </view>
+                                                             <view  class="project_image" >
+                                                                     <image class="project_image_item" src="{{attachUrl}}" data-src="{{attachUrl}}" bindtap="previewImage"/>
+                                                              </view>
+
+                                                            </view>
+
+                                        </view>
+
+                         <view class="weui-cell weui-cell_input">
+                                        <view class="weui-cell__hd">
+                                            <view class="weui-label">请假项目</view>
+                                        </view>
+                                        <view class="weui-cell__ft">
+                                         <picker mode="selector" style="width:100%" range="{{projectList}}" range-key="name" value="{{projectIndex}}"  bindchange="bindProjectChange">
+                                                    <view class="picker">{{projectList[projectIndex]['name']}}</view>
+                                            </picker>
+                                        </view>
+                                    </view>
+ <view class="page__bd page__bd_spacing page__bd_margin">
+        <button class="weui-btn" type="primary" form-type="submit">保存</button>
+</view>
+
+    </view>
+     </view>
+</view>
+</form>

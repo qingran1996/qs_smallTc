@@ -1,0 +1,8 @@
+/* miniprogram/pages/allProjectList/allProjectList.wxss */
+
+.weui-cell_input{
+min-height:60rpx;
+}
+.weui-cell__ft{
+width:100%;
+}

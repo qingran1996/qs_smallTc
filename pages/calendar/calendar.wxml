@@ -1,0 +1,111 @@
+<view class="page" scroll-top="{{scrollTop}}" style="height:{{scrollHeight}}px;">
+  <!-- 年月 -->
+  <view class="yearcheck">
+    <view style="font-weight: bold;font-size: 38rpx;height:70rpx;line-height: 70rpx">月份选择</view>
+    <view class="yearshow">
+      <view class="leftshow">
+        <view class="section">
+          <picker bindchange="bindPickerChangeYear" value="{{yearsindex}}" range="{{years}}">
+            <view class="picker">
+              {{yearsname}}年
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="centershow"> —— </view>
+      <view class="rightshow">
+        <view class="section">
+          <picker bindchange="bindPickerChangeMonth" value="{{monthsindex}}" range="{{months}}">
+            <view class="picker">
+              {{monthsname}}月
+            </view>
+          </picker>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 金额区间 -->
+  <view class="yearcheck">
+    <view style="font-weight: bold;font-size: 38rpx;height:70rpx;line-height: 70rpx">金额区间</view>
+    <view class="yearshow">
+      <view class="leftshow">
+        <input class="weui-input" type="number" value="{{lowmoney}}" placeholder="最低" bindinput="lowmoneyshow" />
+      </view>
+      <view class="centershow"> —— </view>
+      <view class="rightshow">
+        <input class="weui-input" type="number" value="{{highmoney}}" placeholder="最高" bindinput="highmoneyshow" />
+      </view>
+    </view>
+  </view>
+  <!-- 付款 -->
+  <view class="yearcheck1">
+    <view style="font-weight: bold;font-size: 38rpx;height:70rpx;line-height: 70rpx;padding: 0 40rpx;">付款类型</view>
+
+    <!--Tab布局-->
+    <view class='title' style="height: 40px;">
+      <view class="{{0 == currentIndex ? 'title-sel-selected' : 'title-sel'}}" bindtap='titleClick' data-idx='0'>
+        <text>付款申请</text>
+        <hr class="line-style" />
+      </view>
+      <view class="{{1 == currentIndex ? 'title-sel-selected' : 'title-sel'}}" bindtap='titleClick' data-idx='1'>
+        <text>费用预支</text>
+        <hr class="line-style" />
+      </view>
+    </view>
+    <view style="height:{{moneyheight}}px;">
+      <swiper bindchange='swiperTab' current='{{currentIndex}}' class="swiper">
+        <swiper-item wx:if="{{currentIndex == 0}}">
+          <!-- <mp-searchbar bindselectresult="selectResult" search="{{search}}"></mp-searchbar> -->
+          <view class="weui-search-bar">
+            <view class="weui-search-bar__form">
+              <!-- 搜索框 -->
+              <view class="weui-search-bar__box">
+                <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                <input type="text" class="weui-search-bar__input" value="{{inputVal}}" bindinput="searchinputVal"
+                  placeholder="请输入搜索内容" />
+              </view>
+            </view>
+            <!-- 搜索按钮,调用搜索查询方法 -->
+            <view class="weui-search-bar__cancel-btn" bindtap='searchnav'>搜索</view>
+          </view>
+          <view class="weui-cells__title">搜索结果</view>
+          <view style="height:{{searchheight}}px;overflow-y:scroll;">
+            <mp-cells ext-class="my-cells" title="">
+              <mp-cell hover wx:for="{{expenseGYS}}" wx:key="index" data-data="{{item}}" bindtap="tagshow">
+                <view slot="title">
+                  <view class="lefttitle">
+                    <view>{{item.name}}</view>
+                    <view style="font-size: 26rpx;color: lightgray;">开户行: {{item.bank}}</view>
+                    <view style="font-size: 26rpx;color: lightgray;">银行卡号: {{item.num}}</view>
+                  </view>
+                </view>
+                <view slot="footer" hidden="{{!item.isdone}}">
+                  <mp-icon icon="done" color="rgb(2,167,240)" size="{{25}}"></mp-icon>
+                </view>
+              </mp-cell>
+            </mp-cells>
+          </view>
+
+
+
+        </swiper-item>
+        <swiper-item wx:if="{{currentIndex == 1}}" style="overflow-y:scroll;">
+          <!-- <radio-group bindchange="radioChange">
+            <radio value="{{item.value}}" checked="true" color="rgb(2,167,240)" />
+          </radio-group> -->
+          <view class="rightexpense" style="flex-direction:row;">
+            <view class="flex-item {{item.isdone?'flex-item-type':''}}" wx:for="{{expenseTypeData}}" wx:key="index" data-data="{{item}}" bindtap="tagshow1">{{item.name}}</view>
+          </view>
+        </swiper-item>
+      </swiper>
+    </view>
+
+  </view>
+  <!-- 底部按钮 -->
+  <view class="bottomshow">
+    <button type="primary" class="buttonshow" bindtap="nochange"
+      style="background-color: rgb(127,127,127);width:100%;margin-right:10rpx;">取消筛选</button>
+    <button type="primary" class="buttonshow" bindtap="sure"
+      style="background-color: rgb(2,167,240);width:100%;">确定</button>
+  </view>
+</view>

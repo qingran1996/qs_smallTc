@@ -1,0 +1,32 @@
+<view class="page">
+  <mp-cells ext-class="my-cells" title="">
+    <mp-cell>
+      <view slot="title">员工户名</view>
+      <view slot="footer">
+        <input class="weui-input" value="{{bankusername}}" bindinput='bankusernamechange' placeholder="请输入员工户名" />
+      </view>
+    </mp-cell>
+
+    <mp-cell>
+      <view slot="title">银行卡号</view>
+      <view slot="footer">
+        <input class="weui-input" value="{{banknum}}" bindinput='banknumchange' placeholder="请输入银行卡号" />
+      </view>
+    </mp-cell>
+
+    <mp-cell>
+      <view slot="title">开户行</view>
+      <view slot="footer">
+        <input class="weui-input" value="{{bankname}}" bindinput='banknamechange' placeholder="请输入开户行" />
+      </view>
+    </mp-cell>
+
+  </mp-cells>
+</view>
+<view class="weui-footer weui-footer_fixed-bottom">
+
+  <view class="weui-footer__text">
+      <button type="primary" bindtap="save">保存</button>
+  </view>
+
+</view>

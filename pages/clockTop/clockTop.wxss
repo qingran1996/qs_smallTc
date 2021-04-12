@@ -1,0 +1,4 @@
+/* miniprogram/pages/clockTop/clockTop.wxss */
+.page{
+height:100%;
+}

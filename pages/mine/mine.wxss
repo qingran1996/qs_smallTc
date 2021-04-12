@@ -1,0 +1,58 @@
+/* miniprogram/pages/mine/mine.wxss */
+.page {
+  overflow-y: scroll;
+}
+
+.header {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.sex {
+  width: 57rpx;
+  height: 64rpx;
+}
+.loginout_btn {
+  width: 100%;
+  /* position: fixed;
+  bottom: 20rpx;
+  width: 80%;
+  height: 94rpx;
+  line-height: 94rpx;
+  border-radius: 40rpx;
+  text-align: center;
+  font-size: 40rpx;
+  border: 1px solid #67cbc8;
+  background: #67cbc8;
+  color: #fff; */
+}
+
+.loginout_btn:hover {
+  background: #67cbc8;
+  color: #fff;
+}
+
+.bank {
+  margin: 20rpx 20rpx;
+  box-shadow: 0 0 10px #000;
+  border-radius: 20rpx;
+}
+
+.fg {
+  width: 100%;
+  text-align: center;
+  color: rgb(2, 167, 240);
+  padding: 30rpx 0;
+  font-size: 35rpx;
+  background-color: #fff;
+  border-bottom: 1px dashed #000;
+}
+
+.chooseProject {
+  text-align: center;
+}
+.signimage {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 10rpx;
+}

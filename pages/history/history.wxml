@@ -1,0 +1,3 @@
+<view class="page" scroll-top="{{scrollTop}}" style="height:{{scrollHeight}}px;">
+  <mp-searchbar bindselectresult="selectResult" search="{{search}}" bindinput="searching"></mp-searchbar>
+</view>

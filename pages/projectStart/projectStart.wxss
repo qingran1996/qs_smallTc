@@ -1,0 +1,7 @@
+/* miniprogram/pages/projectStart/projectStart.wxss */
+.weui-cell_input{
+min-height:40rpx;
+}
+.weui-cell__ft{
+width:100%;
+}

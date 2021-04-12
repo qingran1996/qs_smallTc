@@ -1,0 +1,65 @@
+<view class="page">
+  <view class="page__bd">
+
+    <mp-cells ext-class="my-cells" title="项目概况">
+      <mp-cell value="项目名称" footer="{{projectname}}"></mp-cell>
+      <mp-cell value="项目号" footer="{{projectnum}}"></mp-cell>
+      <mp-cell value="所属部门" footer="{{deptname}}"></mp-cell>
+      <mp-cell value="项目阶段" footer="{{projectpart}}"></mp-cell>
+      <mp-cell value="发放金额" footer="{{projectmoney}}"></mp-cell>
+    </mp-cells>
+
+    <mp-cells ext-class="my-cells" title="项目奖金分配">
+      <view class="part" wx:for="{{moneyFP}}" wx:for-item="item" wx:key="a">
+        <view class="showtitle">{{item.roleName}}(<text class="text_title">{{item.positionName}}</text>)</view>
+        <mp-cells ext-class="my-cells" class="bt_title" title="">
+          <view class="title">
+            <view class="titlenew">姓名</view>
+            <view class="titlenew">占比</view>
+            <view class="titlenew">金额</view>
+          </view>
+          <view class="title titlecolor" wx:for="{{item.namedata}}" wx:for-item="cell" wx:key="b">
+            <view class="titlenew">{{cell.userName}}</view>
+            <view class="titlenew">{{cell.proportionStr}}</view>
+            <view class="titlenew">{{cell.pfee}}</view>
+          </view>
+        </mp-cells>
+      </view>
+    </mp-cells>
+
+    <!-- <mp-cells title="">
+      <mp-cell link hover value="有hover效果" footer="说明文字">
+        <image slot="footer" src="{{icon}}" style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;">
+        </image>
+      </mp-cell>
+    </mp-cells> -->
+    <mp-cells ext-class="my-cells" title="">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">申请时间</view>
+        </view>
+        <view class="weui-cell__bd"></view>
+        <view class="weui-cell__ft">
+          <text>{{time}}</text>
+          <!-- <icon class="icon-box-img" type="waiting"></icon> -->
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_access" bindtap="jump_nav" data-state="{{processInstanceId}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">审核状态</view>
+        </view>
+        <view class="weui-cell__bd"></view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">
+          <icon wx:if="{{projectzt==0}}" class="icon-box-img" type="warn"></icon>
+          <icon wx:elif="{{projectzt==1}}" class="icon-box-img" type="success"></icon>
+          <icon wx:else class="icon-box-img" type="waiting"></icon>
+          <text wx:if="{{projectzt==0}}" class="right_text">未通过</text>
+          <text wx:elif="{{projectzt==1}}" class="right_text">通过</text>
+          <text wx:else class="right_text">审核中</text>
+        </view>
+      </view>
+    </mp-cells>
+
+
+  </view>
+</view>

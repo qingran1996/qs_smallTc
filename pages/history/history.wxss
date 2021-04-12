@@ -1,0 +1,8 @@
+.searchbar-result {
+  height: calc(100% - 55px);
+  overflow-y: scroll;
+}
+.page {
+  overflow-y: hidden;
+  height: 100%;
+}

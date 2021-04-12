@@ -1,0 +1,66 @@
+<!--miniprogram/pages/clock/clock.wxml-->
+<form bindsubmit="formSubmit" class="form">
+    <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+        <view class="page__hd">
+            <view class="weui-cells weui-cells_after-title">
+
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">补卡时间</view>
+                    </view>
+                    <view class="weui-cell__ft">
+                        <picker mode="multiSelector" value="{{clockTime}}" bindchange="changeClockTime"
+                            bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
+                            <view class="picker">
+                                {{dateTimeArray[0][clockTime[0]]}}-{{dateTimeArray[1][clockTime[1]]}}-{{dateTimeArray[2][clockTime[2]]}}
+                                {{dateTimeArray[3][clockTime[3]]}}:{{dateTimeArray[4][clockTime[4]]}}</view>
+                        </picker>
+
+
+                    </view>
+                </view>
+
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">打卡项目</view>
+                    </view>
+                    <view class="weui-cell__ft">
+                        <picker mode="selector" style="width:100%" range="{{projectList}}" range-key="name"
+                            value="{{projectIndex}}" bindchange="bindProjectChange">
+                            <view class="picker">{{projectList[projectIndex]['name']}}</view>
+                        </picker>
+                    </view>
+                </view>
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">打卡标签</view>
+                    </view>
+                    <view class="weui-cell__ft">
+                        <picker mode="selector" style="width:100%" range="{{tagList}}" range-key="name"
+                            value="{{tagIndex}}" bindchange="bindTagChange">
+                            <view class="picker">{{tagList[tagIndex]['name']}}</view>
+                        </picker>
+                    </view>
+                </view>
+
+
+                <view class="weui-cell  weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">备注:</view>
+                    </view>
+                    <view class="weui-cell__ft">
+                        <textarea class="weui-textarea" name="remark" value="{{remark}}" bindinput='bindRemarkInput'
+                            placeholder="备注" style="height: 3.3em" />
+                        </view>
+
+                        </view>
+
+
+ <view class="page__bd page__bd_spacing page__bd_margin">
+        <button class="weui-btn" type="primary" form-type="submit">{{tagName}}打卡</button>
+</view>
+
+    </view>
+     </view>
+</view>
+</form>

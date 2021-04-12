@@ -1,0 +1,81 @@
+<!--miniprogram/pages/projectStart/projectStart.wxml-->
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__hd">
+     <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label label">项目名称</view>
+                    </view>
+                    <view class="weui-cell__bd label_value">
+                        {{name}}
+                    </view>
+                </view>
+                <view class="weui-cell weui-cell_input">
+                                    <view class="weui-cell__hd">
+                                        <view class="weui-label label">项目编号</view>
+                                    </view>
+                                    <view class="weui-cell__bd label_value">
+                                       {{no}}
+                                    </view>
+                                </view>
+                 <view class="weui-cells weui-cells_after-title">
+                            <view class="weui-cell">
+                             <view class="weui-cell__hd">
+                                                                    <view class="weui-label label">项目描述</view>
+                                                                </view>
+                                <view class="weui-cell__bd label_value">
+                                    {{desc}}
+                                </view>
+                            </view>
+                        </view>
+                <view class="weui-cell weui-cell_input">
+                                    <view class="weui-cell__hd">
+                                        <view class="weui-label label">开始日期</view>
+                                    </view>
+                                    <view class="weui-cell__bd label_value">
+                                        {{start_date_show}}
+                                    </view>
+                                </view>
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label label">结束日期</view>
+                    </view>
+                    <view class="weui-cell__bd label_value">
+                        {{end_date_show}}
+                    </view>
+                </view>
+                <view class="weui-cells weui-cells_after-title">
+                            <view class="weui-cell weui-cell_switch">
+                                <view class="weui-cell__bd label">是否外派</view>
+                                <view class="weui-cell__ft label_value">
+                                    {{is_expatriated_show}}
+                                </view>
+                            </view>
+                 </view>
+                 <view class="weui-cells weui-cells_after-title" wx:if="{{role_name}}">
+                                             <view class="weui-cell weui-cell_switch">
+                                                 <view class="weui-cell__bd label">角色</view>
+                                                 <view class="weui-cell__ft label_value">
+                                                     {{role_name}}
+                                                 </view>
+                                             </view>
+                                  </view>
+                  <view class="weui-cells weui-cells_after-title" wx:if="{{state_name}}">
+                            <view class="weui-cell weui-cell_switch">
+                                <view class="weui-cell__bd label">状态</view>
+                                <view class="weui-cell__ft label_value">
+                                    {{state_name}}
+                                </view>
+                            </view>
+                 </view>
+                 <view class="page__bd page__bd_spacing page__bd_margin" wx:if="{{op.can_edit}}">
+                          <navigator url='../projectEdit/projectEdit?projectId={{id}}'> <button class='weui-btn'  type="primary" >编辑</button></navigator>
+                </view>
+
+                 <view class="page__bd page__bd_spacing page__bd_margin" wx:if="{{op.can_audit}}">
+                               <navigator url='../projectUserAdd/projectUserAdd?projectId={{id}}'><button class='weui-btn'  type="primary" >添加成员</button></navigator>
+                    </view>
+                </view>
+     </view>
+</view>
+

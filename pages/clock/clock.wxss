@@ -1,0 +1,28 @@
+/* miniprogram/pages/clock/clock.wxss */
+.weui-cell_input{
+min-height:60rpx;
+}
+.weui-cell__ft{
+width:100%;
+}
+
+
+.project_image{
+ float:right;
+ margin-top:5rpx;
+ width:auto;
+}
+
+.project_image_item{
+width:60rpx;
+height:60rpx;
+margin-right:10rpx;
+}
+
+.project_image_button{
+width:60rpx;
+height:60rpx;
+}
+.lble{
+color:lightblue;
+}

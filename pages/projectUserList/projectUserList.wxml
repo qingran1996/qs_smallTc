@@ -1,0 +1,19 @@
+<!--miniprogram/pages/projectUserList/projectUserList.wxml-->
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__hd">
+
+      <view class="weui-cells weui-cells_after-title" wx:for="{{list}}" wx:key="index">
+      <view class="weui-cell"  bindlongpress="deleteProjectUser" data-project_id="{{projectId}}" data-user_id="{{item.id}}" data-role_id="{{item.role_id}}" data-name="{{item.name}}">
+      <view class="weui-cell__bd">{{item.name}}</view><view class="weui-cell__ft">{{item.role_name}}</view>
+      </view>
+      </view>
+       <view class="weui-cells weui-cells_after-title" wx:if="{{rights.can_add}}">
+            <view class="weui-msg__icon-area">
+                  <icon type="warn" size="10"> </icon> <text>长按表格项可以删除对应的成员</text>
+            </view>
+            <navigator url='../projectUserAdd/projectUserAdd?projectId={{projectId}}'><button class="weui-btn" type="primary">添加成员</button></navigator>
+        </view>
+    </view>
+</view>
+
+

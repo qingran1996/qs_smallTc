@@ -1,0 +1,147 @@
+<!--miniprogram/pages/myLeaveDetail/myLeaveDetail.wxml-->
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__hd">
+     <view class="weui-cells weui-cells_after-title">
+
+               <view class="weui-cell weui-cell_input" >
+                                     <view class="weui-cell__hd">
+                                         <view class="weui-label">请假类型</view>
+                                     </view>
+                                     <view class="weui-cell__ft">
+                                                 {{flowRunData.leave_type_name}}
+                                     </view>
+                                 </view>
+
+
+                 <view class="weui-cell weui-cell_input">
+                             <view class="weui-cell__hd">
+                                       <view class="weui-label">开始时间</view>
+                                </view>
+                                <view class="weui-cell__ft">
+                                      {{flowRunData.from_date_show}}
+                                </view>
+                            </view>
+                <view class="weui-cell weui-cell_input">
+                             <view class="weui-cell__hd">
+                                       <view class="weui-label">结束时间</view>
+                                </view>
+                                <view class="weui-cell__ft">
+                                    {{flowRunData.to_date_show}}
+                                </view>
+
+                        </view>
+
+
+
+
+
+  <view class="weui-cell weui-cell_input">
+                        <view class="weui-cell__hd">
+                            <view class="weui-label">请假时长(h)</view>
+                        </view>
+                        <view class="weui-cell__ft">
+                                       {{flowRunData.duration}}
+                        </view>
+                    </view>
+                      <view class="weui-cell weui-cell_input">
+                                            <view class="weui-cell__hd">
+                                                <view class="weui-label">请假说明</view>
+                                            </view>
+                                            <view class="weui-cell__ft">
+                                                               {{flowRunData.reason}}
+                                            </view>
+                                        </view>
+    <view class="weui-cell weui-cell_input">
+                                            <view class="weui-cell__hd">
+                                                <view class="weui-label">图片</view>
+                                            </view>
+                                            <view class="weui-cell__ft">
+                                                 <image class="project_image_item" src="{{flowRunData.attach}}" bindtap="previewImage" data-src="{{flowRunData.attach}}"/>
+                                        </view>
+                                        </view>
+                         <view class="weui-cell weui-cell_input">
+                                        <view class="weui-cell__hd">
+                                            <view class="weui-label">请假项目</view>
+                                        </view>
+                                        <view class="weui-cell__ft">
+                                          {{flowRunData.project_name}}
+                                        </view>
+                                    </view>
+                                       <view class="weui-cell weui-cell_input">
+                                                                            <view class="weui-cell__hd">
+                                                                                <view class="weui-label">审核状态</view>
+                                                                            </view>
+                                                                            <view class="weui-cell__ft">
+                                                                              {{flowRun.flow_run_state_name}}
+                                                                            </view>
+                                                                        </view>
+
+    </view>
+     </view>
+     <view  class="weui-cell weui-cell_input"  wx:for="{{projectList}}" wx:key="index">
+                   <view class="project project_label2"><view class="placeholder">{{item.label}}:</view></view>
+                                    <view class="project project_name">
+                                         <view class="placeholder">{{item.name}}</view>
+                                    </view>
+
+                                     <view class="project project_audit_state_{{item.audits.audit_state}}" bindtap="showAuditInfo" data-id="{{item.id}}" data-type="project">
+                                                 <view class="placeholder">{{item.audits.audit_state_name}}</view>
+                                     </view>
+         </view>
+
+                  <view class="weui-cell weui-cell_input"  wx:if="{{masterAudit.audit_user_name}}">
+                                                               <view class="project project_label2"><view class="placeholder">总经理审批:</view></view>
+                                                                                <view class="project project_name">
+                                                                                     <view class="placeholder">{{masterAudit.audit_user_name}}</view>
+                                                                                </view>
+
+
+                                                                                 <view class="project project_audit_state_{{masterAudit.audit_state}}" bindtap="showAuditInfo" masterAudit-id="{{hrAudit.id}}"  data-type="master">
+                                                                                             <view class="placeholder">{{masterAudit.audit_state_name}}</view>
+                                                                                 </view>
+
+                                              </view>
+                     <view class="weui-cell weui-cell_input"  wx:if="{{hrAudit.audit_user_name}}">
+                                             <view class="project project_label2"><view class="placeholder">人事审批:</view></view>
+                                                              <view class="project project_name">
+                                                                   <view class="placeholder">{{hrAudit.audit_user_name}}</view>
+                                                              </view>
+
+
+                                                               <view class="project project_audit_state_{{hrAudit.audit_state}}" bindtap="showAuditInfo" data-id="{{hrAudit.id}}" data-type="hr">
+                                                                           <view class="placeholder">{{hrAudit.audit_state_name}}</view>
+                                                               </view>
+
+                            </view>
+         <modal id="modal" hidden="{{currentAuditHide}}" title="当前审核信息" cancel-text="取消"  confirm-text="确认"  bindcancel="closeAuditInfo" bindconfirm="closeAuditInfo">
+                              <view class="weui-flex">
+                                     <view class="weui-flex__item label2"  ><view class="placeholder">审核意见</view></view>
+                                     <view class="weui-flex__item "><view class="placeholder">{{currentAuditInfo.audit_comments}}</view></view>
+                             </view>
+                             <view class="weui-flex">
+                                     <view class="weui-flex__item label2"><view class="placeholder">审核者</view></view>
+                                     <view class="weui-flex__item"><view class="placeholder">{{currentAuditInfo.audit_user_name}}</view></view>
+                             </view>
+                              <view class="weui-flex">
+                                     <view class="weui-flex__item label2"><view class="placeholder">审核状态</view></view>
+                                     <view class="weui-flex__item"><view class="placeholder">{{currentAuditInfo.audit_state_name}}</view></view>
+                             </view>
+                               <view class="weui-flex">
+                                         <view class="weui-flex__item label2"><view class="placeholder">审核时间</view></view>
+                                         <view class="weui-flex__item "><view class="placeholder">{{currentAuditInfo.audit_date_show}}</view></view>
+                                 </view>
+                     </modal>
+
+                      <view class="weui-flex float_button" wx:if="{{canRollback}}">
+
+                                                    <view class="weui-flex__item">
+
+                                                        <button class="weui-btn" type="warn" bindtap="rollback">撤回</button>
+
+                                                     </view>
+                                             </view>
+                                 <modal id="modal" hidden="{{rollbackModuleHide}}" title="您确定撤回" confirm-text="确认" cancel-text="取消" bindcancel="cancel_rollback" bindconfirm="confirm_rollback">
+
+                                 </modal>
+</view>
+

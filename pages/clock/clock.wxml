@@ -1,0 +1,104 @@
+<!--miniprogram/pages/clock/clock.wxml-->
+<form bindsubmit="formSubmit" class="form">
+    <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+        <view class="page__hd">
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">当前天气</view>
+                    </view>
+                    <view class="weui-cell__ft">
+                        <text class="lble">{{weather.weather.text}}:</text>{{weather.weather.data}}
+                        <text class="lble">{{weather.temperature.text}}:</text>{{weather.temperature.data}}
+                        <text class="lble">{{weather.humidity.text}}:</text>{{weather.humidity.data}}
+                        <text class="lble">{{weather.winddirection.text}}:</text>{{weather.winddirection.data}}
+                        <text class="lble"> {{weather.windpower.text}}:</text>{{weather.windpower.data}}
+
+                    </view>
+                </view>
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">当前时间</view>
+                    </view>
+                    <view class="weui-cell__ft">
+
+                        {{clockTimeShow}}
+
+                    </view>
+                </view>
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">您的位置:</view>
+                    </view>
+                    <view class="weui-cell__ft">
+                        {{address}}
+                    </view>
+                </view>
+                <view class="weui-cell weui-cell_picker">
+                    <map id="map" longitude="{{long}}" latitude="{{lat}}" scale="{{scale}}" markers="{{markers}}"
+                        style="width:{{mapWidth}}"></map>
+                </view>
+
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">位置照片:</view>
+                    </view>
+                    <view class="weui-cell__ft">
+
+
+                        <view class="project_image">
+                            <image class="project_image_button" type="default" size="mini" bindtap="chooseImage"
+                                src="../../images/project/upload.png"></image>
+                        </view>
+                        <view class="project_image">
+                            <image class="project_image_item" src="{{attachUrl}}" data-src="{{attachUrl}}"
+                                bindtap="previewImage" />
+                        </view>
+
+
+                    </view>
+                </view>
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">打卡项目</view>
+                    </view>
+                    <view class="weui-cell__ft">
+                        <picker mode="selector" style="width:100%" range="{{projectList}}" range-key="name"
+                            value="{{projectIndex}}" bindchange="bindProjectChange">
+                            <view class="picker">{{projectList[projectIndex]['name']}}</view>
+                        </picker>
+                    </view>
+                </view>
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">打卡标签</view>
+                    </view>
+                    <view class="weui-cell__ft">
+                        <picker mode="selector" style="width:100%" range="{{tagList}}" range-key="name"
+                            value="{{tagIndex}}" bindchange="bindTagChange">
+                            <view class="picker">{{tagList[tagIndex]['name']}}</view>
+                        </picker>
+                    </view>
+                </view>
+
+
+                <view class="weui-cell  weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">备注:</view>
+                    </view>
+                    <view class="weui-cell__ft">
+                        <textarea class="weui-textarea" name="remark" value="{{remark}}" bindinput='bindRemarkInput'
+                            placeholder="备注" style="height: 3.3em" />
+                        </view>
+
+                        </view>
+
+
+ <view class="page__bd page__bd_spacing page__bd_margin">
+        <button class="weui-btn" type="primary" form-type="submit">{{tagName}}打卡</button>
+</view>
+
+    </view>
+     </view>
+</view>
+</form>

@@ -1,0 +1,53 @@
+<!--miniprogram/pages/clockList/clockList.wxml-->
+<view class="page">
+    <view class="page__bd page__bd_spacing ">
+      <view class="weui-flex">
+                <view class="weui-flex__item" bindtap="prev" ><view class="placeholder" >{{char_lt}}</view></view>
+                <view class="weui-flex__item"  ><view class="placeholder">{{beginDate}}至{{endDate}}</view></view>
+                <view class="weui-flex__item" bindtap="next" ><view class="placeholder" >{{char_gt}}</view></view>
+            </view>
+        <view class="weui-flex">
+            <view class="weui-flex__item label2"  ><view class="placeholder">类型</view></view>
+            <view class="weui-flex__item label2" wx:for="{{weekList}}" wx:key="{{index}}">
+            <view class="placeholder1"><text>{{item['date_show']}}</text></view>
+        </view>
+
+</view>
+        <view  class="weui-flex" wx:for="{{tagList}}" wx:key="index">
+                 <view class="weui-flex__item label2"><view class="placeholder">{{item.name}}</view> </view>
+                <view class="weui-flex__item" wx:for="{{weekList}}" wx:for-item="week"  wx:key="index"  data-itemid="{{item.id}}" data-weekindex="{{index}}">
+                    <view class="placeholder" wx:if="{{clockList[item['id']][index]}}">
+                        <view wx:if="{{clockList[item['id']][index]['is_applied'] == '1'}}">
+                                   <navigator url="../clockApplyDetail/clockApplyDetail?clockId={{clockList[item['id']][index]['id']}}" class="audit_state{{clockList[item['id']][index]['audit_state']}}">{{clockList[item['id']][index]['name']}}</navigator></view>
+                        <view  wx:else>
+                        <navigator url="../clockDetail/clockDetail?id={{clockList[item['id']][index]['id']}}">{{clockList[item['id']][index]['name']}}</navigator></view>
+                        </view>
+                    <view class="placeholder" wx:else>
+                        <navigator url="../clockApply/clockApply?tagId={{item['id']}}&date={{week['dateInt']}}" class="audit_state2">补</navigator>
+                    </view>
+                </view>
+
+        </view>
+        <view class="buttom_view">
+            <view  class="weui-flex audit_item color{{item.label}}"  wx:for="{{projectList}}" wx:key="index">
+              <view class="project project_label2"><view class="placeholder">{{item.label}}:</view></view>
+                               <view class="project project_name">
+                                    <view class="placeholder">{{item.name}}</view>
+                               </view>
+
+            </view>
+
+         </view>
+         <view class="weui-flex float_button" >
+                            <view class="weui-flex__item">
+
+                                 <navigator url='../clock/clock'><button class="weui-btn" type="primary">去打卡</button></navigator>
+
+                            </view>
+
+                     </view>
+
+    </view>
+
+</view>
+

@@ -1,0 +1,55 @@
+<!--miniprogram/pages/timeRecord/timeRecord.wxml-->
+<view class="page">
+    <view class="page__bd page__bd_spacing ">
+      <view class="weui-flex">
+                <view class="weui-flex__item" ><view class="placeholder">{{beginDate}}至{{endDate}}</view></view>
+            </view>
+        <view class="weui-flex">
+            <view class="weui-flex__item label"  ><view class="placeholder">类型</view></view>
+            <view class="weui-flex__item label" wx:for="{{weekList}}" wx:key="{{index}}"><view class="placeholder"><text>{{item['date_show']}}</text></view></view>
+        </view>
+
+
+        <view  class="weui-flex" wx:for="{{workTypeList}}" wx:key="index">
+                 <view class="weui-flex__item label"><view class="placeholder">{{item.name}}</view> </view>
+                <view class="weui-flex__item" wx:for="{{weekList}}" wx:for-item="week"  wx:key="index">
+                    <view class="placeholder1">{{workTimeList[item['id']][index]}}</view>
+                </view>
+
+        </view>
+        <view class="buttom_view">
+            <view class="weui-flex"  wx:for="{{leaveTypeList}}"  wx:key="index">
+                   <view class="weui-flex__item label"><view class="placeholder">{{item.name}}</view></view>
+                   <view class="weui-flex__item" wx:for="{{weekList}}" wx:for-item="week"  wx:key="index" >
+                        <view class="placeholder">{{leaveTimeList[item.id][index]}}</view>
+                   </view>
+            </view>
+            <view class="weui-flex audit_item" wx:for="{{projectList}}" wx:key="index">
+                          <view class="project project_label2"><view class="placeholder">{{item.label}}:</view></view>
+                                           <view class="project project_name">
+                                                <view class="placeholder">{{item.name}}</view>
+                                           </view>
+                                           <view  class="project_image" wx:if="{{item.is_expatriated}}">
+                                                   <image class="project_image_item" src="{{attachs[item.id]}}" data-src="{{attachs[item.id]}}" bindtap="previewImage"/>
+                                           </view>
+                                            <view class="project project_audit_state_{{item.audits.audit_state}}" bindtap="showAuditInfo" data-projectid="{{item.id}}">
+                                                        <view class="placeholder">{{item.audits.audit_state_name}}</view>
+                                            </view>
+                        </view>
+         </view>
+            <div class="weui-flex float_button">
+                 <view class="weui-flex__item">
+                     <button class="weui-btn" type="primary" bindtap="pass">同意</button>
+                 </view>
+                 <view class="weui-flex__item">
+                     <button class="weui-btn" type="warn" bindtap="reject">拒绝</button>
+                 </view>
+          </div>
+
+          <modal id="modal" hidden="{{auditModuleHide}}" title="审核意见" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+              <textarea placeholder="审核意见：" value="{{auditContent}}"  bindinput='bindContentInput' auto-focus />
+          </modal>
+</view>
+
+</view>
+

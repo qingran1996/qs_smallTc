@@ -1,0 +1,112 @@
+<view class="page">
+	<view class="page__hd">
+		<view class="weui-cells weui-cells_after-title">
+
+			<!-- <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					申请部门
+				</view>
+				<view class="weui-cell__hd hdShow">{{park}}</view>
+			</view> -->
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					客户名称
+				</view>
+				<view class="weui-cell__hd hdShow">{{khremark}}</view>
+			</view>
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					项目描述
+				</view>
+				<view class="weui-cell__hd hdShow"><textarea disabled="true" class="weui-input" auto-height="true" value="{{projectremark}}" /></view>
+			</view>
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					项目地址
+				</view>
+				<view class="weui-cell__hd hdShow"><textarea disabled="true" class="weui-input" auto-height="true" value="{{dzremark}}" /></view>
+				<!-- <view class="weui-cell__hd hdShow">{{dzremark}}</view> -->
+				<!-- <input class="weui-input" value="{{dzremark}}" auto-focus bindinput='placeRemarkInput' placeholder="请输入内容"/> -->
+			</view>
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					合同类型
+				</view>
+				<view class="weui-cell__hd hdShow">{{htType}}</view>
+			</view>
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					项目类型
+				</view>
+				<view class="weui-cell__hd hdShow">{{protectType}}</view>
+			</view>
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					行业
+				</view>
+				<view class="weui-cell__hd hdShow">{{hangye}}</view>
+			</view>
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					开始日期
+				</view>
+				<view class="weui-cell__hd hdShow">{{startTime}}</view>
+			</view>
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					结束日期
+				</view>
+				<view class="weui-cell__hd hdShow">{{endTime}}</view>
+			</view>
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					项目总工时(总包项目)
+				</view>
+				<view class="weui-cell__hd hdShow">{{projectAllTime}}</view>
+				<!-- <input class="weui-input" value="{{projectAllTime}}" auto-focus bindinput='projectAllTimechange' placeholder="请输入内容"/> -->
+			</view>
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__hd">
+					所属区域
+				</view>
+				<view class="weui-cell__hd hdShow">{{areashow}}</view>
+				<!-- <input class="weui-input" value="{{projectAllTime}}" auto-focus bindinput='projectAllTimechange' placeholder="请输入内容"/> -->
+			</view>
+
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="jump_nav" data-state="{{shstate.state}}">
+				<view class="weui-cell__hd showstate">
+					审核状态
+				</view>
+
+				<!-- <view class="weui-cell__bd">{{item.name}}</view> -->
+
+				<view class="weui-cell__ft weui-cell__ft_in-access">
+					<icon wx:if="{{shstate.state==3}}" class="icon-box-img" type="success"></icon>
+          <icon wx:elif="{{shstate.state==2}}" class="icon-box-img" type="waiting"></icon>
+          <icon wx:else class="icon-box-img" type="warn"></icon>
+					<text wx:if="{{shstate.state==3}}" class="right_text">已通过</text>
+					<text wx:elif="{{shstate.state==2}}" class="right_text">审核中</text>
+					<text wx:else class="icon-box-img" class="right_text">未通过</text>
+				</view>
+
+			</view>
+
+		</view>
+	</view>
+
+</view>
+<!-- <view class="weui-footer bottomShow">
+	<view class="weui-footer__text">
+		<button type="primary" class="bottomShow1" style="background-color: rgb(2,167,240);">申请</button>
+	</view>
+</view> -->

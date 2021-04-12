@@ -1,0 +1,46 @@
+.weui-cell__bd {
+  color:gray !important;
+}
+.weui-cell__ft {
+  color:black !important;
+}
+.page {
+  background-color: rgb(244, 244, 244);
+}
+.weui-cells__title {
+  margin: 0;
+  height: 100rpx;
+  line-height: 100rpx;
+  
+  color: rgba(0,0,0,0.8);
+  font-size: 35rpx;
+}
+.showtitle{
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  color: black;
+}
+.text_title {
+  color: rgb(28, 178, 238);
+}
+.title {
+  display: flex;
+  height: 90rpx;
+  line-height: 90rpx;
+  width: 100%；
+}
+.bt_title {
+  border-top: 0 !important;
+}
+.titlecolor {
+  margin-bottom: 10rpx;
+  background-color: rgb(246,247,251);
+}
+.titlenew {
+  width: calc(100% / 3);
+  text-align: center;
+}
+.right_text {
+  margin-left: 10rpx;
+}

@@ -1,0 +1,23 @@
+<!--miniprogram/pages/startProjectList/startProjectList.wxml-->
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <scroll-view scroll-x="false" scroll-top="{{scrollTop}}" scroll-y="true" class='scroll-views' bindscrolltolower="lower" style="height:{{scrollHeight}}px;" bindscroll="scroll">
+    <view class="page__hd">
+    <view wx:if="{{hasResult}}">
+      <view class="weui-cells weui-cells_after-title" wx:for="{{list}}" wx:key="{{index}}">
+                 <navigator url="../projectDetailWithManager/projectDetailWithManager?projectId={{item.id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                     <view class="weui-cell__bd">{{item.name}}</view>
+                     <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                 </navigator>
+             </view>
+              </view>
+                  <view wx:else>
+                     <view class="weui-cells weui-cells_after-title">
+                              <view class="weui-cell__bd">暂无记录</view>
+                              <view class="weui-cell__ft"></view>
+                      </view>
+                  </view>
+     </view>
+     </scroll-view>
+</view>
+
+

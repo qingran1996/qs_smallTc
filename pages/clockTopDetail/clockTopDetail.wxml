@@ -1,0 +1,96 @@
+<!--miniprogram/pages/clockDetail/clockDetail.wxml-->
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__hd">
+     <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                         <view class="weui-cell__hd">
+                             <view class="weui-label">打卡员工</view>
+                         </view>
+                         <view class="weui-cell__ft">
+
+                         {{userName}}
+
+                         </view>
+                     </view>
+            <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">当天天气</view>
+                    </view>
+                    <view class="weui-cell__ft" wx:if="{{weather}}">
+
+                    <text class="lble">{{weather.weather.text}}:</text>{{weather.weather.data}}
+                    <text class="lble">{{weather.temperature.text}}:</text>{{weather.temperature.data}}
+                     <text class="lble">{{weather.humidity.text}}:</text>{{weather.humidity.data}}
+                    <text class="lble">{{weather.winddirection.text}}:</text>{{weather.winddirection.data}}
+                   <text class="lble"> {{weather.windpower.text}}:</text>{{weather.windpower.data}}
+
+                    </view>
+                </view>
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">打卡时间</view>
+                    </view>
+                    <view class="weui-cell__ft">
+
+                    {{clockTimeShow}}
+
+                    </view>
+                </view>
+                                    <view class="weui-cell weui-cell_input">
+                                        <view class="weui-cell__hd">
+                                            <view class="weui-label">您的位置：</view>
+                                        </view>
+                                          <view class="weui-cell__ft">
+                                          {{address}}
+                                          </view>
+                                  </view>
+                                                       <view class="weui-cell weui-cell_input">
+                     <map id="map" longitude="{{long}}" latitude="{{lat}}" scale="{{scale}}" markers="{{markers}}"   style="width:{{mapWidth}}" ></map>
+                                                     </view>
+                 <view class="weui-cell weui-cell_input">
+                                                     <view class="weui-cell__hd">
+                                                         <view class="weui-label">位置照片：</view>
+                                                     </view>
+                                                     <view class="weui-cell__ft">
+
+
+
+                              <view  class="project_image" >
+                                      <image class="project_image_item" src="{{attachUrl}}" data-src="{{attachUrl}}" bindtap="previewImage"/>
+                               </view>
+
+
+                                                     </view>
+                                                 </view>
+                                                  <view class="weui-cell weui-cell_input">
+                                                      <view class="weui-cell__hd">
+                                                          <view class="weui-label">打卡项目</view>
+                                                      </view>
+                                                      <view class="weui-cell__ft">
+                                                      {{projectName}}
+                                                      </view>
+                                                  </view>
+                                                     <view class="weui-cell weui-cell_input">
+                                                            <view class="weui-cell__hd">
+                                                                <view class="weui-label">打卡标签</view>
+                                                            </view>
+                                                            <view class="weui-cell__ft">
+                                                             {{tagName}}
+                                                            </view>
+                                                        </view>
+
+
+                            <view class="weui-cell weui-cell_input">
+                             <view class="weui-cell__hd">
+                                                                    <view class="weui-label">备注：</view>
+                                                                </view>
+                                <view class="weui-cell__ft">
+                                    {{remark}}
+                                </view>
+
+                        </view>
+
+    </view>
+     </view>
+</view>
+

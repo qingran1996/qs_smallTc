@@ -1,0 +1,100 @@
+/* miniprogram/pages/allProjectList/allProjectList.wxss */
+.page {
+  /* height: 90%; */
+  -webkit-overflow-scrolling: touch;
+  /* overflow-y: scroll; */
+}
+/* .liucheng {
+  width: 100%;
+  padding: 35rpx;
+}
+.showlc {
+  border-top: 0 !important;
+} */
+.bottomshow{
+  position: fixed;
+  width: 100%;
+  bottom: 3.75%;
+}
+.buttonshow{
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.weui-cell_input{
+  min-height:60rpx;
+  }
+  .weui-cell__hd {
+    width: 100%;
+  }
+  .bottomShow {
+    position: relative;
+  }
+  .hd_center {
+    text-align: center;
+    width: 100% !important;
+  }
+  .weui-cell__bd {
+    width: 100% !important;
+  }
+  .right_text {
+    margin-left: 10rpx;
+  }
+  .weui-cell__ft{
+  width:50%;
+  }
+  .bottomShow {
+    position: fixed;
+    width: 100%;
+    bottom: 10rpx;
+  }
+  .bottomShow1{
+    height: 80rpx;
+    line-height: 80rpx;
+  }
+  .showmask {
+    background-color: rgba(0,0,0,0.5);
+  }
+  .zan-dialog__mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    pointer-events: auto;
+    background: rgba(0, 0, 0, 0);
+    display: none;
+  }
+  
+  .closenav{
+    position: absolute;
+    right: 10rpx;
+    top: 5rpx;
+  }
+  .zan-dialog__container {
+    position: fixed;
+    bottom: 45%;
+    width: 650rpx;
+    height: 350rpx;
+    margin-left: 50rpx;
+    background: #f8f8f8;
+    transform: translateY(300%);
+    transition: all 0.4s ease;
+    z-index: 9999;
+    border-radius: 20rpx;
+    box-shadow: 0px 3px 3px 2px gainsboro;
+  }
+  
+  .zan-dialog--show .zan-dialog__container {
+    transform: translateY(0);
+  }
+  
+  .zan-dialog--show .zan-dialog__mask {
+    display: block;
+  }
+  .issure {
+    position: absolute;
+    margin: 0 20%;
+    width: 60%;
+    bottom: 10rpx;
+  }

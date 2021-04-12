@@ -1,0 +1,53 @@
+<!--miniprogram/pages/auditLeaveList/auditLeaveList.wxml-->
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+<view class="swiper-tab">
+    <view class="swiper-tab-item {{auditState==0?'active':''}}" data-current="0" bindtap="clickTab">待审</view>
+    <view class="swiper-tab-item {{auditState==1?'active':''}}" data-current="1" bindtap="clickTab">已审</view>
+</view>
+<swiper current="{{auditState}}" duration="300"  bindchange="swiperTab">
+<swiper-item>
+    <scroll-view scroll-x="false" scroll-y="true" class='scroll-views' bindscrolltolower="lower">
+   <view class="page__hd">
+     <view wx:if="{{hasResult}}">
+          <view class="weui-cells weui-cells_after-title" wx:for="{{list}}" wx:key="{{index}}">
+                     <navigator url="../auditLeaveDetail/auditLeaveDetail?flowRunAuditId={{item.id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                         <view class="weui-cell__bd">{{item.flow_run_title}}</view>
+                         <view class="weui-cell__ft weui-cell__ft_in-access">{{item.audit_state_name}}</view>
+                     </navigator>
+                 </view>
+
+     </view>
+     <view wx:else>
+        <view class="weui-cells weui-cells_after-title">
+                 <view class="weui-cell__bd">暂无审核请求</view>
+                 <view class="weui-cell__ft"></view>
+         </view>
+     </view>
+         </view>
+              </scroll-view>
+    </swiper-item>
+     <swiper-item>
+     <scroll-view scroll-x="false" scroll-y="true" class='scroll-views' bindscrolltolower="lower">
+       <view class="page__hd">
+         <view wx:if="{{hasResult2}}">
+              <view class="weui-cells weui-cells_after-title" wx:for="{{list2}}" wx:key="{{index}}">
+                         <navigator url="../auditLeaveDetail/auditLeaveDetail?flowRunAuditId={{item.id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                             <view class="weui-cell__bd">{{item.flow_run_title}}</view>
+                             <view class="weui-cell__ft weui-cell__ft_in-access">{{item.audit_state_name}}</view>
+                         </navigator>
+                     </view>
+
+         </view>
+         <view wx:else>
+            <view class="weui-cells weui-cells_after-title">
+                     <view class="weui-cell__bd">暂无记录</view>
+                     <view class="weui-cell__ft"></view>
+             </view>
+         </view>
+             </view>
+
+        </scroll-view>
+    </swiper-item>
+</swiper>
+       </view>
+

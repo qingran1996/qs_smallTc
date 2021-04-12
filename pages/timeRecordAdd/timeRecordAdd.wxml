@@ -1,0 +1,94 @@
+<!--miniprogram/pages/timeRecordAdd/timeRecordAdd.wxml-->
+<form bindsubmit="formSubmit" class="form" >
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__hd">
+     <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cells weui-cells_after-title">
+                                                         <view class="weui-cell weui-cell_switch">
+                                                             <view class="weui-cell__hd">
+                                                              <view class="weui-label">{{is_work_set_name}}
+                                                              </view></view>
+                                                             <view class="weui-cell__ft">
+                                                                 <switch checked="{{is_work_set}}" bindchange="checkIsWorkSet"/>
+                                                             </view>
+                                                         </view>
+                                                     </view>
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">参与项目</view>
+                    </view>
+                    <view class="weui-cell__ft">
+                     <picker mode="selector" style="width:100%" range="{{projectList}}" range-key="name" value="{{projectId}}"  bindchange="bindProjectChange">
+                                <view class="picker">{{projectList[projectId]['name']}}</view>
+                        </picker>
+                    </view>
+                </view>
+
+                 <view class="weui-cells weui-cells_after-title">
+                            <view class="weui-cell">
+                             <view class="weui-cell__hd">
+                                       <view class="weui-label">日期（周）</view>
+                                </view>
+                                <view class="weui-cell__ft">
+                                    <checkbox-group bindchange="checkWeekChange">
+                                      <label class="checkbox" style="width:100%; display:block" wx:for="{{weekShowList}}" wx:key="index">
+                                        <checkbox value="{{item.id}}" checked="{{item.checked}}" />
+                                        {{item.date_show}}
+                                      </label>
+                                      <br/>
+                                    </checkbox-group>
+                                </view>
+                            </view>
+                        </view>
+
+                <view class="weui-cell weui-cell_input" hidden="{{workHidden}}">
+                        <view class="weui-cell__hd">
+                            <view class="weui-label">工时类型</view>
+                        </view>
+                        <view class="weui-cell__ft">
+                                    <picker mode="selector" style="width:100%" range="{{workTypeList}}"  range-key="name"  value="{{workType}}"  bindchange="bindWorkTypeChange">
+                                            <view class="picker">{{workTypeList[workType]['name']}}</view>
+                                    </picker>
+                        </view>
+                    </view>
+
+  <view class="weui-cell weui-cell_input" hidden="{{workHidden}}">
+                        <view class="weui-cell__hd">
+                            <view class="weui-label">工作时长</view>
+                        </view>
+                        <view class="weui-cell__ft">
+                                    <picker mode="selector" style="width:100%" range="{{durationList}}"   value="{{duration}}"  bindchange="bindDurationChange">
+                                            <view class="picker">{{durationList[duration]}}</view>
+                                    </picker>
+                        </view>
+                    </view>
+  <view class="weui-cell weui-cell_input" hidden="{{leaveHidden}}">
+                        <view class="weui-cell__hd">
+                            <view class="weui-label">请假类型</view>
+                        </view>
+                        <view class="weui-cell__ft">
+                                    <picker mode="selector" style="width:100%" range="{{leaveTypeList}}"  range-key="name"  value="{{workType}}"  bindchange="bindLeaveTypeChange">
+                                            <view class="picker">{{leaveTypeList[leaveType]['name']}}</view>
+                                    </picker>
+                        </view>
+                    </view>
+
+  <view class="weui-cell weui-cell_input" hidden="{{leaveHidden}}">
+                        <view class="weui-cell__hd">
+                            <view class="weui-label">请假时长</view>
+                        </view>
+                        <view class="weui-cell__ft">
+                                    <picker mode="selector" style="width:100%" range="{{durationList}}"   value="{{duration}}"  bindchange="bindDurationChange">
+                                            <view class="picker">{{durationList[duration]}}</view>
+                                    </picker>
+                        </view>
+                    </view>
+ <view class="page__bd page__bd_spacing page__bd_margin">
+        <button class="weui-btn" type="primary" form-type="submit">保存</button>
+</view>
+
+    </view>
+     </view>
+</view>
+</form>
+

@@ -1,0 +1,69 @@
+<scroll-view class="page" scroll-y="true" style="max-height:{{scrollHeight}}px;">
+  <mp-cells ext-class="my-cells" title="">
+    <!-- -- -->
+    <mp-cell value="请款类型" footer="{{moneyType}}"></mp-cell>
+    <!-- -- -->
+    <mp-cell>
+      <view slot="title">请款金额</view>
+      <view class="choosemoney">
+        <input class="weui-input" value="{{moneyNum}}" placeholder-style="color:#F76260" bindinput='moneyNumchange' placeholder="请输入请款金额" />
+      </view>
+      <view slot="footer" style="font-size:30rpx;">元</view>
+    </mp-cell>
+    <!-- -- -->
+    <mp-cell>
+      <view>比价过程文件（选填）</view>
+      <view style="width: 60%;margin: 20rpx 0;color: red;">
+       {{partword}}
+      </view>
+      <view slot="footer" class="uploadshow" bindtap="partwordshow">{{partwordstyle}}</view>
+    </mp-cell>
+    <!-- -- -->
+    <mp-cell>
+      <view>合同（选填）</view>
+      <view style="width: 60%;margin: 20rpx 0;color: red;">
+       {{ht}}
+      </view>
+      <view slot="footer" class="uploadshow" bindtap="htshow">{{htstyle}}</view>
+    </mp-cell>
+    <!-- -- -->
+    <mp-cell>
+      <view>发票（选填）</view>
+      <view style="width: 60%;margin: 20rpx 0;color: red;">
+       {{fp}}
+      </view>
+      <view slot="footer" class="uploadshow" bindtap="fpshow">{{fpstyle}}</view>
+    </mp-cell>
+    <!-- -- -->
+    <mp-cell link>
+      <view>申请说明（选填）</view>
+      <view style="width: 60%;margin: 20rpx 0;">
+        <textarea  class="weui-input" auto-height="true" value="{{askremark}}"  bindinput='askRemarkInput'
+					placeholder="请输入内容" />
+      </view>
+      <view slot="footer"></view>
+    </mp-cell>
+    <!-- -- -->
+    <mp-cell>
+      <view>相关附件（选填）</view>
+      <view style="width: 60%;margin: 20rpx 0;color: red;">
+       {{uploadFileName}}
+      </view>
+      <view slot="footer" class="uploadshow" bindtap="uploading">{{uploadText}}</view>
+    </mp-cell>
+    <!-- -- -->
+    <mp-cell link>
+      <view>备注（选填）</view>
+      <view style="width: 60%;margin: 20rpx 0;">
+        <textarea  class="weui-input" auto-height="true" value="{{bzremark}}"  bindinput='bzRemarkInput'
+					placeholder="请输入内容" />
+      </view>
+      <view slot="footer"></view>
+    </mp-cell>
+    <!-- -- -->
+  </mp-cells>
+</scroll-view>
+<view class="bottomshow">
+  <button type="primary" class="buttonshow" bindtap="saveTo"
+      style="background-color: rgb(2,167,240);">保存</button>
+</view>

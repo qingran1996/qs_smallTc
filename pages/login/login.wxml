@@ -1,0 +1,30 @@
+<!--miniprogram/pages/login/login.wxml-->
+
+<view class='login'>
+  <!-- 账号密码登录 -->
+  <view class='name_login' wx:if='{{!autoLogin}}'>
+    <view class='login_list'>
+      <image class='fl img2' src='../../images/phone.png' bindtap="clickTap"></image>
+      <input class='fl' value='{{loginName}}' bindinput='loginNameInput' placeholder='手机号' placeholder-style='color: #c5c5c5;'></input>
+    </view>
+    <view class='login_list'>
+      <image class='fl img3' src='../../images/password.png'></image>
+      <input class='fl' value='{{loginPassword}}' bindinput='loginPassInput' placeholder='密码'  password='true' placeholder-style='color: #c5c5c5;'></input>
+      <!-- <navigator class='fr' url="../forgetPassword/forgetPassword">忘记密码?</navigator> -->
+    </view>
+  </view>
+  <!-- 验证码登录 -->
+  <view class='auto_login' wx:if='{{autoLogin}}'>
+    <view class='login_list'>
+     <image class='fl img2' src='../../images/phone.png'></image>
+      <input class='fl' value='{{codeLoginName}}' bindinput='codeLoginNameInput' placeholder='手机号/邮箱' placeholder-style='color: #c5c5c5;'></input>
+    </view>
+     <view class='login_list'>
+      <image class='fl img3' src='../../images/password.png'></image>
+      <input class='fl' type='number' value='{{code}}' bindinput='codeInput' placeholder='验证码' placeholder-style='color: #c5c5c5;' maxlength='6'></input>
+       <button class='btn_code' bindtap='getCode'>{{codeName}}</button>
+    </view>
+  </view>
+
+  <button class='login_btn' bindtap='login'>登录</button>
+</view>

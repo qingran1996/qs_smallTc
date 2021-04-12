@@ -1,0 +1,19 @@
+<view class="page">
+  <mp-cells ext-class="my-cells" title="">
+    <view class="weui-cell weui-cell_input" wx:for="{{showdata}}" wx:key="a">
+      <view class="weui-cell__hd" >
+        <view class="weui-label">{{item.zhiwei}}(<text class="text_title">{{item.name}}</text>)</view>
+        <view wx:if="{{item.state==1}}">{{item.time}}</view>
+      </view>
+      <view class="weui-cell__bd"></view>
+      <view class="weui-cell__ft">
+        <icon wx:if="{{item.state==1}}" class="icon-box-img" type="success"></icon>
+        <icon wx:else class="icon-box-img" type="waiting"></icon>
+        <text wx:if="{{item.state==1}}" class="right_text">通过</text>
+        <text wx:else class="right_text">待审核</text>
+      </view>
+    </view>
+    <!-- <solt style="padding-left:16px;">123</solt> -->
+    <!-- <solt wx:else style="padding-left:16px;display:none;">{{item.time}}</solt> -->
+  </mp-cells>
+</view>

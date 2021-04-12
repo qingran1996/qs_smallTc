@@ -1,0 +1,37 @@
+/* miniprogram/pages/allProjectList/allProjectList.wxss */
+
+.weui-cell_input{
+  min-height:60rpx;
+  }
+  .weui-cell__hd {
+    width: 100%;
+  }
+  .showstate {
+    text-align: left;
+  }
+  .hdShow {
+    text-align: right;
+  }
+  .weui-cell__dd {
+    width: 100%;
+    text-align: right;
+  }
+  .showcolor {
+    background-color: rgb(242,242,242);
+    color: gray;
+  }
+  .bottomShow {
+    position: relative;
+  }
+  .hd_center {
+    text-align: right;
+  }
+  .weui-cell__bd {
+    width: 100% !important;
+  }
+  .right_text {
+    margin-left: 10rpx;
+  }
+  .weui-cell__ft{
+  width:50%;
+  }

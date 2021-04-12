@@ -1,0 +1,67 @@
+.title {
+  width: 100%;
+  height: auto;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.weui-cell__hd {
+  width: 100%;
+}
+.weui-cell {
+  padding: 45rpx !important;
+}
+.right_text {
+  margin-left: 10rpx;
+}
+.weui-cell__ft{
+width:100%;
+}
+.title-sel {
+  color: gray;
+  font-size: 32rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+page{
+  overflow-y: hidden;
+}
+.title-sel  .line-style{
+  background: #fff;
+  height: 6rpx;
+  width: 40rpx;
+  position: relative;
+  margin-top: 10rpx;
+}
+ 
+.title-sel-selected{
+  color: #006bff;
+  line-height: 60rpx;
+  font-size: 32rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title-sel-selected .line-style{
+  background: #006bff;
+  height: 6rpx;
+  width: 90rpx;
+  position: relative;
+  margin-top: 10rpx;
+}
+.swiper,.scroll{
+  height: 100%;
+}
+.bottomshow{
+  position: fixed;
+  width: 100%;
+  bottom: 3.75%;
+}
+.buttonshow{
+  height: 80rpx;
+  line-height: 80rpx;
+  width: 100%;
+  margin: 0 5rpx;
+}

@@ -1,0 +1,81 @@
+/* miniprogram/pages/register/register.wxss */
+.register{
+  padding-top: 20rpx;
+  margin-left: 50rpx;
+  margin-right: 50rpx;
+}
+.reg_view{
+  height: 60rpx;
+  margin-top: 54rpx;
+  padding-bottom: 10rpx;
+  border-bottom: 1px solid #f1f1f1;
+  display: flex;
+}
+.reg_view text, input{
+  font-size:36rpx;
+  color: #272727;
+}
+input, radio-group{
+  margin-left: 30rpx;
+  flex: 1;
+}
+radio-group .radio+.radio{
+  margin-left: 96rpx;
+}
+.radio{
+  font-size: 36rpx;
+  color: #c5c5c5;
+}
+.btn_code{
+  min-width: 250rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 30rpx;
+  background: #67cbc8;
+  color: #fff;
+}
+.reg_btn{
+  width: 100%;
+  height: 94rpx;
+  line-height: 94rpx;
+  margin-top: 76rpx;
+  margin-bottom: 40rpx;
+  border-radius: 40rpx;
+  text-align: center;
+  font-size: 40rpx;
+  background: #67cbc8;
+  color: #fff;
+}
+.agree{
+  font-size: 36rpx;
+  color: #c5c5c5;
+}
+checkbox{
+  border-radius: 100%;
+}
+.circle{
+  width: 30rpx;
+  height: 30rpx;
+  margin-top: 4rpx;
+  margin-right: 16rpx;
+  border: 1px solid #c5c5c5;
+  border-radius: 100%;
+}
+.choosed{
+  border-color: #67cbc8;
+  background: #67cbc8;
+  position: relative;
+}
+.choosed:after {
+  content: '\00a0';
+  display: inline-block;
+  border: 4rpx solid #fff;
+  border-top-width: 0;
+  border-right-width: 0; 
+  width: 18rpx;
+  height: 10rpx;
+  -webkit-transform: rotate(-50deg);
+  position: absolute;
+  top:6rpx;
+  left:4rpx;
+}

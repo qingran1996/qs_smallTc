@@ -1,0 +1,25 @@
+<view class="page">
+  <view class="weui-cells weui-cells_after-title" wx:for="{{list}}" wx:key="a">
+    <view class="navshow" wx:if="{{list.length!=0}}">
+      <view class="hdshow">
+        <view class="hd_left">
+          <view>{{item.zhiwei}}(<text class="text_title">{{item.name}}</text>)</view>
+          <view>{{item.time}}</view>
+        </view>
+        
+        <view class="hd_right">
+          <icon wx:if="{{item.state==1}}" class="icon-box-img" type="success" style="margin-right: 20rpx"></icon>
+          <icon wx:elif="{{item.state==2}}" class="icon-box-img" type="warn" style="margin-right: 20rpx"></icon>
+          <icon wx:else class="icon-box-img" type="waiting" style="margin-right: 20rpx"></icon>
+          <text>{{item.statename}}</text>
+        </view>
+      </view>
+      <view class="hdshow textbgc">
+        <textarea disabled='true' class="weui-textarea" name="remark"
+          value="{{item.remark}}" bindinput='projectTimechange' />
+      </view>
+    </view>
+    <view class="navshow" wx:else>暂无信息</view>
+  </view>
+
+</view>
